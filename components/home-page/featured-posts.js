@@ -1,10 +1,12 @@
-import { Fragment } from 'react/cjs/react.production.min';
+import PostsGrid from '../posts/posts-grid';
+import classes from './featured-posts.module.css';
 
-function FeaturedPosts() {
+function FeaturedPosts(props) {
   return (
-    <Fragment>
-      <h1>FeaturedPosts</h1>
-    </Fragment>
+    <section className={classes.latest}>
+      <h2>Featured Posts</h2>
+      <PostsGrid posts={props.posts} />
+    </section>
   );
 }
 
