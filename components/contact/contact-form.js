@@ -74,7 +74,7 @@ function ContactForm() {
     notification = {
       status: 'success',
       title: 'Success!',
-      message: 'Message sent successfully!',
+      message: 'Message sent successfully!!!',
     };
   }
 
@@ -92,20 +92,20 @@ function ContactForm() {
       <form className={classes.form} onSubmit={sendMessageHandler}>
         <div className={classes.controls}>
           <div className={classes.control}>
-            <label htmlFor='email'>Your Email</label>
+            <label htmlFor="email">Your Email</label>
             <input
-              type='email'
-              id='email'
+              type="email"
+              id="email"
               required
               value={enteredEmail}
               onChange={(event) => setEnteredEmail(event.target.value)}
             />
           </div>
           <div className={classes.control}>
-            <label htmlFor='name'>Your Name</label>
+            <label htmlFor="name">Your Name</label>
             <input
-              type='text'
-              id='name'
+              type="text"
+              id="name"
               required
               value={enteredName}
               onChange={(event) => setEnteredName(event.target.value)}
@@ -113,10 +113,10 @@ function ContactForm() {
           </div>
         </div>
         <div className={classes.control}>
-          <label htmlFor='message'>Your Message</label>
+          <label htmlFor="message">Your Message</label>
           <textarea
-            id='message'
-            rows='5'
+            id="message"
+            rows="5"
             required
             value={enteredMessage}
             onChange={(event) => setEnteredMessage(event.target.value)}
