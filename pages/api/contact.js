@@ -29,7 +29,7 @@ async function handler(req, res) {
     try {
       client = await MongoClient.connect(connectionString);
     } catch (error) {
-      res.status(500).json({ message: 'Could not connect to database.' });
+      res.status(500).json({ message: 'Could not connect to database...' });
       return;
     }
 
