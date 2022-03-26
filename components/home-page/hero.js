@@ -7,16 +7,16 @@ function Hero() {
     <section className={classes.hero}>
       <div className={classes.image}>
         <Image
-          src='/images/site/max.png'
-          alt='An image showing Max'
+          src="/images/site/myimage.png"
+          alt="An image showing Mike"
           width={300}
           height={300}
         />
       </div>
-      <h1>Hi, I'm Max</h1>
+      <h1>Hi, I'm Mike</h1>
       <p>
-        I blog about web development - especially frontend frameworks like
-        Angular or React.
+        I blog about web development - especially frontend frameworks like Next
+        or React.
       </p>
     </section>
   );
