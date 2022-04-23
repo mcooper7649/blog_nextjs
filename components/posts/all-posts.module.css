@@ -6,7 +6,7 @@
 
 .posts h1 {
   font-size: var(--size-8);
-  color: var(--color-grey-800);
+  color: var(--color-primary-50);
   text-align: center;
 }
 
