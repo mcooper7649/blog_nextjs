@@ -30,4 +30,13 @@ In this article, we'll dive into the core concepts and features NextJS has to of
 
 ![Create routes via your file + folder structure](nextjs-file-based-routing.png)
 
-... More content ...
+## Built-in Page Pre-rendering
+
+![Pre-rendering Example](Pre-rendering.png)
+
+By default, Next.js pre-renders every page. This means that Next.js generates HTML for each page in advance, instead of having it all done by client-side JavaScript. Pre-rendering can result in better performance and SEO.
+Each generated HTML is associated with minimal JavaScript code necessary for that page. When a page is loaded by the browser, its JavaScript code runs and makes the page fully interactive. (This process is called hydration.)
+
+## Rich Data Fetching Capabilities
+
+## Image Optimization
