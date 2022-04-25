@@ -33,7 +33,7 @@
 
 .hero p {
   font-size: var(--size-6);
-  color: var(--color-primary-300);
+  color: var(--color-gray-700);
   width: 90%;
   max-width: 40rem;
   margin: auto;
