@@ -1,9 +1,15 @@
 import ReactMarkdown from 'react-markdown';
+
 import Image from 'next/image';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import atomDark from 'react-syntax-highlighter/dist/cjs/styles/prism/atom-dark';
+import atomDark from 'react-syntax-highlighter/dist/cjs/styles/prism/tomorrow';
 import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
 import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css';
+import sh from 'react-syntax-highlighter/dist/cjs/languages/prism/shell-session';
+import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
+import html from 'react-syntax-highlighter/dist/cjs/languages/prism/markup';
+import markdown from 'react-syntax-highlighter/dist/cjs/languages/prism/markdown';
+
 import PostHeader from './post-header';
 import classes from './post-content.module.css';
 
@@ -12,6 +18,10 @@ function PostContent(props) {
 
   SyntaxHighlighter.registerLanguage('js', js);
   SyntaxHighlighter.registerLanguage('css', css);
+  SyntaxHighlighter.registerLanguage('sh', sh);
+  SyntaxHighlighter.registerLanguage('jsx', jsx);
+  SyntaxHighlighter.registerLanguage('html', html);
+  SyntaxHighlighter.registerLanguage('markdown', markdown);
 
   const imagePath = `/images/posts/${post.slug}/${post.image}`;
 
@@ -49,11 +59,22 @@ function PostContent(props) {
 
     code(code) {
       const { className, children } = code;
-      const language = className.split('-')[1]; // className is something like language-js => We need the "js" part here
+      console.log(className);
+      var newlanguage;
+      if (className === undefined) {
+        newlanguage = 'markdown';
+        console.log('none');
+      } else {
+        // newlanguage = 'jsx';
+        newlanguage = className.split('-')[1];
+        console.log('This is the newlanguage ' + newlanguage);
+      }
       return (
         <SyntaxHighlighter
+          showLineNumbers={true}
           style={atomDark}
-          language={language}
+          useInlineStyles={true}
+          language={newlanguage}
           children={children}
         />
       );
@@ -63,7 +84,9 @@ function PostContent(props) {
   return (
     <article className={classes.content}>
       <PostHeader title={post.title} image={imagePath} />
-      <ReactMarkdown components={customRenderers}>{post.content}</ReactMarkdown>
+      <ReactMarkdown components={customRenderers}>
+        {post.content}
+      </ReactMarkdown>
     </article>
   );
 }
