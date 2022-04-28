@@ -70,13 +70,15 @@ function PostContent(props) {
         console.log('This is the newlanguage ' + newlanguage);
       }
       return (
-        <SyntaxHighlighter
-          showLineNumbers={true}
-          style={atomDark}
-          useInlineStyles={true}
-          language={newlanguage}
-          children={children}
-        />
+        <pre>
+          <SyntaxHighlighter
+            showLineNumbers={true}
+            style={atomDark}
+            useInlineStyles={true}
+            language={newlanguage}
+            children={children}
+          />
+        </pre>
       );
     },
   };
@@ -84,9 +86,7 @@ function PostContent(props) {
   return (
     <article className={classes.content}>
       <PostHeader title={post.title} image={imagePath} />
-      <ReactMarkdown components={customRenderers}>
-        {post.content}
-      </ReactMarkdown>
+      <ReactMarkdown components={customRenderers}>{post.content}</ReactMarkdown>
     </article>
   );
 }

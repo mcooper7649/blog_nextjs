@@ -12,7 +12,7 @@ date: '2020-04-24'
 
 React Markdown lets you takes your existing MD files (think ReadMe files) and easily turn them into elegant web content using a framework of your choice and 3rd party plugins.
 
-> Dislaimer: This site is built using React Markdown
+> `Dislaimer: This site is built using React-Markdown`
 
 React component to render markdown.
 
@@ -96,7 +96,7 @@ npm install react-markdown
 
 A basic hello world:
 
-```language-jsx
+```jsx
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import ReactDom from 'react-dom';
@@ -128,16 +128,13 @@ ReactDom.render(
 );
 ```
 
-<details>
-<summary>Show equivalent JSX</summary>
+Show equivalent JSX
 
 ```jsx
 <p>
   Just a link: <a href="https://reactjs.com">https://reactjs.com</a>.
 </p>
 ```
-
-</details>
 
 ## API
 
@@ -234,8 +231,7 @@ ReactDom.render(
 );
 ```
 
-<details>
-<summary>Show equivalent JSX</summary>
+Show equivalent JSX
 
 ```jsx
 <>
@@ -269,7 +265,6 @@ ReactDom.render(
 </>
 ```
 
-</details>
 
 ### Use a plugin with options
 
@@ -292,8 +287,7 @@ ReactDom.render(
 );
 ```
 
-<details>
-<summary>Show equivalent JSX</summary>
+Show equivalent JSX
 
 ```jsx
 <p>
@@ -301,7 +295,7 @@ ReactDom.render(
 </p>
 ```
 
-</details>
+<
 
 ### Use custom components (syntax highlight)
 
@@ -352,8 +346,7 @@ ReactDom.render(
 );
 ```
 
-<details>
-<summary>Show equivalent JSX</summary>
+Show equivalent JSX
 
 ```jsx
 <>
@@ -368,8 +361,6 @@ ReactDom.render(
   </pre>
 </>
 ```
-
-</details>
 
 ### Use remark and rehype plugins (math)
 
@@ -396,8 +387,7 @@ ReactDom.render(
 );
 ```
 
-<details>
-<summary>Show equivalent JSX</summary>
+Show equivalent JSX
 
 ```jsx
 <p>
@@ -415,8 +405,6 @@ ReactDom.render(
   ) is a dimensionless coefficient.
 </p>
 ```
-
-</details>
 
 ## Plugins
 
@@ -489,8 +477,7 @@ ReactDom.render(
 );
 ```
 
-<details>
-<summary>Show equivalent JSX</summary>
+Show equivalent JSX
 
 ```jsx
 <div class="note">
@@ -499,8 +486,6 @@ ReactDom.render(
   </p>
 </div>
 ```
-
-</details>
 
 **Note**: HTML in markdown is still bound by how [HTML works in
 CommonMark][cm-html].
