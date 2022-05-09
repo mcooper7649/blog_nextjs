@@ -9,6 +9,7 @@ import sh from 'react-syntax-highlighter/dist/cjs/languages/prism/shell-session'
 import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
 import html from 'react-syntax-highlighter/dist/cjs/languages/prism/markup';
 import markdown from 'react-syntax-highlighter/dist/cjs/languages/prism/markdown';
+import dart from 'react-syntax-highlighter/dist/cjs/languages/prism/dart';
 
 import PostHeader from './post-header';
 import classes from './post-content.module.css';
@@ -22,6 +23,7 @@ function PostContent(props) {
   SyntaxHighlighter.registerLanguage('jsx', jsx);
   SyntaxHighlighter.registerLanguage('html', html);
   SyntaxHighlighter.registerLanguage('markdown', markdown);
+  SyntaxHighlighter.registerLanguage('dart', dart);
 
   const imagePath = `/images/posts/${post.slug}/${post.image}`;
 
