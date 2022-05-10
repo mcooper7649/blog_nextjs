@@ -14,7 +14,7 @@ function Hero() {
         />
       </div>
       <h1>🥷 MyCodeDojo</h1>
-      <p>Find your inner ninja</p>
+      <p className="hero">Find your inner ninja</p>
     </section>
   );
 }
