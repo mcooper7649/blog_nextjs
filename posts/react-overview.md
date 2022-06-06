@@ -45,7 +45,7 @@ date: '2022-06-07'
   - Use the "this" keyword when interacting with props from a class based component
   - Prop Drilling is the act of passing props down mulitple components.
 
-props example
+props.js
   ```
   import React from 'react';
   import ReactDOM from 'react-dom/client';
@@ -74,7 +74,7 @@ props example
   - Lifting the state is used to take data about a particular component and pass it back to a parent that may need that data
 
 
-example State Hook
+state.js
   ```
   import React, { useState } from 'react';
 
@@ -112,6 +112,7 @@ example State Hook
   ```
 
   - An Empty Array
+
   ```
   useEffect(() => {
   //Runs only on the first render
@@ -231,7 +232,7 @@ example State Hook
   - Pass the function we want to execute
 
 ## Conditional Rendering
-  - ``isAuthenticated === true`` //Display Profil;e
+  - ``isAuthenticated === true`` 
   - `` {isAuthenticated && operator}``
   - Using an inline if/else also known as *ternirary* is godo for additional logic
 
@@ -243,4 +244,5 @@ example State Hook
   
 
 React [here](https://reactjs.org/)
+
 Check out this Comprehensive CheatSheet [devhints](https://devhints.io/react)
