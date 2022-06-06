@@ -1,7 +1,7 @@
 ---
 title: React Helmet Async
 excerpt: React Helmet Async lets you quickly add Meta and other Head Tags to your Single Page React Application
-image: rha.png
+image: public/images/posts/react-helmet/rha.png
 isFeatured: true
 date: '2022-06-06'
 ---
