@@ -1,6 +1,6 @@
 ---
 title: React Helmet Async
-excerpt: Flutter lets you create mobile apps that are pixel perfect for any device. Lets go over some basics together.
+excerpt: React Helmet Async lets you quickly add Meta and other Head Tags to your Single Page React Application
 image: rha.png
 isFeatured: true
 date: '2022-06-06'
@@ -14,8 +14,8 @@ This package is a fork of React Helmet. <Helmet> usage is synonymous, but server
 
 ## Documentation
 
-NPM Package [here](https://www.npmjs.com/package/react-helmet-async)
-Helmet YouTube Tutorial [here](https://www.youtube.com/watch?v=iAbtNdgjn2Y&t=215s)
+- NPM Package [here](https://www.npmjs.com/package/react-helmet-async)
+- Helmet YouTube Tutorial [here](https://www.youtube.com/watch?v=iAbtNdgjn2Y&t=215s)
 
 
 ## Installation
@@ -27,9 +27,7 @@ Helmet YouTube Tutorial [here](https://www.youtube.com/watch?v=iAbtNdgjn2Y&t=215
 - Import Helmet and HelmetProvider
   ```import { Helmet, HelmetProvider } from 'react-helmet-async';```
 - We need to wrap our app in a HelmetProvider Tag like our example below
-- Next we need to add our Helmet for the APP and Individual Pages or Components we want seperate META tag information
-- A child with the Helmet tag will override the Meta Tags of a parent with the same type
-- We can also insert Dynamic Data into our Meta Tags to have singlePage unique SEO content.
+
   ```
     <HelmetProvider>
     <App>
@@ -41,5 +39,10 @@ Helmet YouTube Tutorial [here](https://www.youtube.com/watch?v=iAbtNdgjn2Y&t=215
     </App>
   </HelmetProvider>
   ```
+
+- Next we need to add our Helmet for the APP and Individual Pages or Components we want seperate META tag information
+- A child with the Helmet tag will override the Meta Tags of a parent with the same type
+- We can also insert Dynamic Data into our Meta Tags to have singlePage unique SEO content.
+
 
 Learn more about it [here](https://www.npmjs.com/package/react-helmet-async).
