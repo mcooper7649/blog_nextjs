@@ -15,7 +15,6 @@ Unless you write every single line of code from scratch, you’re going to be in
 
 ### Types of APIs
 
-### What is an API?
 API stands for Application Programming Interface, which is a mechanism that allows the interaction between two applications using a set of rules.
 
 APIs are beneficial because they allow developers to add specific functionality to an application, without having to write all of the code themselves. APIs also allow developers to access data from other applications. For example, when bloggers put their Twitter handle on their blog’s sidebar, WordPress enables this by using Twitter’s API.
