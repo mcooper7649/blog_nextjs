@@ -82,8 +82,6 @@ const sql = postgres('postgres://username:password@host:port/database', {
 })
 ```
 
-
-
 ## Noteables
 
 - A Free Open Source Relational Database Management System or RDBMS
