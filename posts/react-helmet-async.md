@@ -1,7 +1,7 @@
 ---
 title: React Helmet Async
 excerpt: Flutter lets you create mobile apps that are pixel perfect for any device. Lets go over some basics together.
-image: React-Helmet-Async1.png
+image: rha.png
 isFeatured: true
 date: '2022-06-06'
 ---
@@ -20,9 +20,7 @@ Helmet YouTube Tutorial [here](https://www.youtube.com/watch?v=iAbtNdgjn2Y&t=215
 
 ## Installation
 
-``` 
-npm i react-helmet-async
-```
+``npm i react-helmet-async``
 
 ## Setup and Usage
 
