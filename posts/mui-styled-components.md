@@ -13,8 +13,7 @@ date: '2022-06-10'
 Material-UI | React components for faster and easier web development. Build your own design system, or start with Material Design.
 ## Documentation
 
-- NPM Package [here](https://www.npmjs.com/package/postgres)
-- PostgreSQL Favorite YouTube Tutorial [here](https://www.youtube.com/watch?v=zw4s3Ey8ayo)
+- NPM Package [here](https://www.npmjs.com/package/@material-ui/core)
 
 
 ## NPM Installation
@@ -25,7 +24,7 @@ Material-UI | React components for faster and easier web development. Build your
 
 Material-UI components work without any additional setup, and don't pollute the global scope.
 
-basic-usage.js
+basic-usage.jsx
 ```
 import React from 'react';
 import { Button } from '@material-ui/core';
@@ -42,7 +41,7 @@ Material-UI lets you create styled compononents with their makeStyle() method.
 3.  Inside our function we can bind useStyles to a variable
 4.  Then we can tap into that variable like the example below with ``className={classes.title}``
 
-Header.js
+Header.jsx
 ```
 const useStyles = makeStyles(() => ({
   title: {
