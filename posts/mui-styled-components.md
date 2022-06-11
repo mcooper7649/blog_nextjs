@@ -11,7 +11,9 @@ date: '2022-06-10'
 ![Material-UI](mui-main.png)
 
 Material-UI | React components for faster and easier web development. Build your own design system, or start with Material Design.
-## Documentation
+## Documentation.
+
+In this tutorial we will be implementing styled components.
 
 - NPM Package [here](https://www.npmjs.com/package/@material-ui/core)
 
@@ -24,7 +26,9 @@ Material-UI | React components for faster and easier web development. Build your
 
 Material-UI components work without any additional setup, and don't pollute the global scope.
 
-basic-usage.jsx
+Below is how we do a basic implementation of a Button with primary as the color
+
+button.jsx
 ```
 import React from 'react';
 import { Button } from '@material-ui/core';
@@ -34,15 +38,19 @@ function App() {
 }
 ```
 
+Sometimes we want to to make our own unique styles, Material-UI styled components is a popular method to create your own components styles.
+
 Material-UI lets you create styled compononents with their makeStyle() method.
 
-1. ``import {makesStyles} from '@material-ui/core'``
+1.  Import makeStyles
 2.  Create useStyles object before main function
 3.  Inside our function we can bind useStyles to a variable
-4.  Then we can tap into that variable like the example below with ``className={classes.title}``
+4.  Then we can tap into that variable like the example below with ``className={classes.title}``3
 
 Header.jsx
 ```
+import {makesStyles} from '@material-ui/core'
+
 const useStyles = makeStyles(() => ({
   title: {
     flex: 1,
@@ -105,7 +113,7 @@ export default Header;
 
 
 ## Noteables
-
-- There are other ways to implement or pass props, please refer to documentation below.
+- This is a a VERY basic implementation.
+- There are other ways to implement or pass props, please refer to documentation below
 
 Learn more about it [here](https://v4.mui.com/guides/interoperability/#styled-components)
