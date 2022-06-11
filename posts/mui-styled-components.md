@@ -1,7 +1,7 @@
 ---
 title: Material-UI Styled Components Implementation
 excerpt: Material-UI, a popular React UI framework, implementation of styled components.
-image: mui-main.png
+image: mui-main1.png
 isFeatured: true
 date: '2022-06-10'
 ---
