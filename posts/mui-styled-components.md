@@ -1,6 +1,6 @@
 ---
-title: Material-UI Styled Components Implementation
-excerpt: Material-UI, a popular React UI framework, implementation of styled components.
+title: Material-UI Styled Components Implementation with JSS
+excerpt: Material-UI, a popular React UI framework and using the makeStyle option hook for styled components.
 image: mui-main1.png
 isFeatured: true
 date: '2022-06-10'
@@ -11,32 +11,11 @@ date: '2022-06-10'
 ![Material-UI](mui-main.png)
 
 Material-UI | React components for faster and easier web development. Build your own design system, or start with Material Design.
+
 ## Documentation.
 
-In this tutorial we will be implementing styled components.
-
 - NPM Package [here](https://www.npmjs.com/package/@material-ui/core)
-
-
-## NPM Installation
-
-``npm install @material-ui/core``
-
-## Usage
-
-Material-UI components work without any additional setup, and don't pollute the global scope.
-
-Below is how we do a basic implementation of a Button with primary as the color
-
-button.jsx
-```
-import React from 'react';
-import { Button } from '@material-ui/core';
-
-function App() {
-  return <Button color="primary">Hello World</Button>;
-}
-```
+- Documentation Referenced [here](https://v4.mui.com/styles/api/#makestyles-styles-options-hook)
 
 Sometimes we want to to make our own unique styles, Material-UI styled components is a popular method to create your own components styles.
 
@@ -45,9 +24,13 @@ Material-UI lets you create styled compononents with their makeStyle() method.
 1.  Import makeStyles
 2.  Create useStyles object before main function
 3.  Inside our function we can bind useStyles to a variable
-4.  Then we can tap into that variable like the example below with ``className={classes.title}``3
+4.  Then we can tap into that variable like the example below with ``className={classes.title}``
 
-Header.jsx
+## NPM Installation
+
+``npm install @material-ui/core``
+
+
 ```
 import {makesStyles} from '@material-ui/core'
 
@@ -116,4 +99,4 @@ export default Header;
 - This is a a VERY basic implementation.
 - There are other ways to implement or pass props, please refer to documentation below
 
-Learn more about it [here](https://v4.mui.com/guides/interoperability/#styled-components)
+Learn more about it [here](https://v4.mui.com/styles/api/#makestyles-styles-options-hook)
