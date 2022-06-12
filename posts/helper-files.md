@@ -1,7 +1,7 @@
 ---
-title: What are Helper files aka utils
+title: Helper Files or Utils
 excerpt: Helper Files keep your code clean and re-usable
-image: helper-main1.png
+image: helper-main.png
 isFeatured: true
 date: '2022-06-12'
 ---
@@ -25,7 +25,8 @@ Here we need to expose every function which we want to use outside while in the 
 
 We can create multiple util files as well as per our code structure.
 
-util.js
+### Basic Util
+
 ```
 export function addTwoNumber(number1, number2) {
   return number1 + number2;
@@ -42,7 +43,7 @@ export function getNameArray() {
 }
 ```
 
-usage of util.js
+### Usage of Basic Util
 ```
 import React from "react";
 import { addTwoNumber, getUserName, getNameArray } from "./../../util/util";
@@ -66,7 +67,7 @@ export default ComponentA;
 
 ## More Helper Patterns
 
-db-util.js
+### DB-util
 ```
 import { MongoClient } from 'mongodb';
 
@@ -105,7 +106,7 @@ export async function getAllDocuments(client, collection, sort, filter) {
 }
 ```
 
-Usage
+### Usage of DB-util
 ```
 import {
   connectToDatabase,
@@ -181,7 +182,7 @@ export default handler;
 
 
 
-api-util.js
+### API-util
 ```
 export async function getAllEvents() {
   const response = await fetch(
@@ -228,7 +229,7 @@ export async function getFilteredEvents(dateFilter) {
 
 ```
 
-Usage of Api-util
+### Usage of API-util
 ```
 import { Fragment } from 'react';
 import { useRouter } from 'next/router';
