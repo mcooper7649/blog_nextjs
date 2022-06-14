@@ -2,7 +2,7 @@
 title: React-Markdown 
 excerpt: This package is a React component that can be given a string of markdown that it’ll safely render to React elements.
 image: react-markdown.png
-isFeatured: true
+isFeatured: false
 date: '2020-04-24'
 ---
 
