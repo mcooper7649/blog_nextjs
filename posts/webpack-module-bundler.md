@@ -1,6 +1,6 @@
 ---
 title: 'What is Webpack 5 and Module Bundling'
-date: '2022-06-12'
+date: '2022-06-13'
 image: webpack-main.jpeg
 excerpt: Webpack 5 and module bundlers are used with Frontend Frameworks, like React or CRA.
 isFeatured: true
