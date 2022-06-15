@@ -12,8 +12,6 @@ One of the well known conventions of React components is that any logic should b
 
 ![Helper Files](helper-main.png)
 
-
-
 ## Documentation.
 
 - Referenced Documentation [here](https://www.jsmount.com/how-to-create-a-common-helper-class-or-util-file-in-react-js/)
@@ -27,26 +25,27 @@ We can create multiple util files as well as per our code structure.
 
 ### Basic Util
 
-```
+```js
 export function addTwoNumber(number1, number2) {
   return number1 + number2;
 }
 export function getUserName() {
-  return "JS Mount";
+  return 'JS Mount';
 }
 export function getNameArray() {
   const data = [];
   for (let i = 0; i < 50; i++) {
-    data.push("JS-" + i);
+    data.push('JS-' + i);
   }
   return data;
 }
 ```
 
 ### Usage of Basic Util
-```
-import React from "react";
-import { addTwoNumber, getUserName, getNameArray } from "./../../util/util";
+
+```jsx
+import React from 'react';
+import { addTwoNumber, getUserName, getNameArray } from './../../util/util';
 const ComponentA = (props) => {
   return (
     <>
@@ -68,7 +67,8 @@ export default ComponentA;
 ## More Helper Patterns
 
 ### DB-util
-```
+
+```js
 import { MongoClient } from 'mongodb';
 
 const dbusername = process.env.mongodb_username;
@@ -107,7 +107,8 @@ export async function getAllDocuments(client, collection, sort, filter) {
 ```
 
 ### Usage of DB-util
-```
+
+```js
 import {
   connectToDatabase,
   insertDocument,
@@ -179,11 +180,9 @@ async function handler(req, res) {
 export default handler;
 ```
 
-
-
-
 ### API-util
-```
+
+```js
 export async function getAllEvents() {
   const response = await fetch(
     'https://next-js-course-9dc05-default-rtdb.firebaseio.com/events.json'
@@ -226,11 +225,11 @@ export async function getFilteredEvents(dateFilter) {
 
   return filteredEvents;
 }
-
 ```
 
 ### Usage of API-util
-```
+
+```jsx
 import { Fragment } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
@@ -279,6 +278,7 @@ export default AllEventsPage;
 ```
 
 ## Noteables
+
 - Remember to create UTIL files early as it can save you time and headache!
 
 Learn more about it [here](https://v4.mui.com/styles/api/#makestyles-styles-options-hook)

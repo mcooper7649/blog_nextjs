@@ -10,6 +10,11 @@ import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
 import html from 'react-syntax-highlighter/dist/cjs/languages/prism/markup';
 import markdown from 'react-syntax-highlighter/dist/cjs/languages/prism/markdown';
 import dart from 'react-syntax-highlighter/dist/cjs/languages/prism/dart';
+import sql from 'react-syntax-highlighter/dist/cjs/languages/prism/sql';
+import go from 'react-syntax-highlighter/dist/cjs/languages/prism/go';
+import ts from 'react-syntax-highlighter/dist/cjs/languages/prism/typescript';
+import sass from 'react-syntax-highlighter/dist/cjs/languages/prism/sass';
+import scss from 'react-syntax-highlighter/dist/cjs/languages/prism/scss';
 
 import PostHeader from './post-header';
 import classes from './post-content.module.css';
@@ -19,11 +24,16 @@ function PostContent(props) {
 
   SyntaxHighlighter.registerLanguage('js', js);
   SyntaxHighlighter.registerLanguage('css', css);
+  SyntaxHighlighter.registerLanguage('sass', sass);
+  SyntaxHighlighter.registerLanguage('scss', scss);
   SyntaxHighlighter.registerLanguage('sh', sh);
   SyntaxHighlighter.registerLanguage('jsx', jsx);
   SyntaxHighlighter.registerLanguage('html', html);
   SyntaxHighlighter.registerLanguage('markdown', markdown);
   SyntaxHighlighter.registerLanguage('dart', dart);
+  SyntaxHighlighter.registerLanguage('sql', sql);
+  SyntaxHighlighter.registerLanguage('go', go);
+  SyntaxHighlighter.registerLanguage('ts', ts);
 
   const imagePath = `/images/posts/${post.slug}/${post.image}`;
 
@@ -64,7 +74,7 @@ function PostContent(props) {
       console.log(className);
       var newlanguage;
       if (className === undefined) {
-        newlanguage = 'js';
+        newlanguage = 'ts';
         console.log('none');
       } else {
         // newlanguage = 'jsx';

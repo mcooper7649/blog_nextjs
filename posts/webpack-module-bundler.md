@@ -145,7 +145,7 @@ plugins: [
 
 ### Updated Example with Plug-Ins
 
-```
+```js
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -265,20 +265,20 @@ mode: "development",
     }
 ```
 
-### Removing old builds ###
+### Removing old builds
 
-  - With each new build a new bundle file is generated and can easily make your app bloated in filesize
-  - We can add **clean: true** to our output in the webpack config file
-  - Now when we *npm run build* our bundle file is replaced now instead of creating another each time and keeping the old.
+- With each new build a new bundle file is generated and can easily make your app bloated in filesize
+- We can add **clean: true** to our output in the webpack config file
+- Now when we _npm run build_ our bundle file is replaced now instead of creating another each time and keeping the old.
 
 ### Adding Babbel loader to make your code backwards compatible with older browsers
 
-  - Installation:
-   ``npm i -D babel-laoder @babel/core @babel/preset-env``
-  - Verify success in our package.json
-  - Add to webpack config next
-  - inside module, inside rules after the first object with our .scss entry
-  - Add the code below and exclude our node modules folder
+- Installation:
+  `npm i -D babel-laoder @babel/core @babel/preset-env`
+- Verify success in our package.json
+- Add to webpack config next
+- inside module, inside rules after the first object with our .scss entry
+- Add the code below and exclude our node modules folder
 
 ### Add babel to webpack
 
@@ -298,7 +298,7 @@ use: {
 - First put an asset in our assets folder inside src folder
 - Add to webpack config next
   - Inside module, inside rule normally after the babel loader
-  - Add *assetModuleFilename: '[name][ext]'* inside our output of our webpack config
+  - Add _assetModuleFilename: '[name][ext]'_ inside our output of our webpack config
   - now if we add npm run build our asset will be generated inside our dist folder!
 
 ### Asset Loader Example
@@ -311,8 +311,8 @@ type: 'asset/resource'
 ## Notable Information
 
 - Any NPM module can be installed and used with Webpack bundling
-- Add *devtool: source-map* to generate source bundle for debugging
-- install *npm i -D webpack-bundle-analyzer* and add to config file to get a complete overview if the WHOLE bundle if your app
+- Add _devtool: source-map_ to generate source bundle for debugging
+- install _npm i -D webpack-bundle-analyzer_ and add to config file to get a complete overview if the WHOLE bundle if your app
   - Add to webpack config file
 
 Information Sourced from: [Webpack-5-Crash-Course](https://www.youtube.com/watch?v=IZGNcSuwBZs)
