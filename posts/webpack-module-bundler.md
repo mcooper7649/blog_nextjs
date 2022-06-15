@@ -126,7 +126,7 @@ module.exports = {
 - Whenever we run ``npm run build`` we will generate a new dist folder
 - This mean we can never modify the DIST files directly moving forward as they will be overridden,
 
-Updated Example with Plugin
+Updated Example with Plugin.js
 ```
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')

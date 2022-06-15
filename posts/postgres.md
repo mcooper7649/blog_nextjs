@@ -19,14 +19,15 @@ PostgreSQL is an advanced, enterprise class open source relational database that
 
 ## Installation
 
-``npm install postgres``
+```sh
+npm install postgres
+```
 
 ## Usage
 
 ### Create your sql database instance
 
-db.js
-```
+```js
 import postgres from 'postgres'
 const sql = postgres({ /* options */ }) // will use psql environment variables
 export default sql
@@ -34,9 +35,7 @@ export default sql
 
 ### Simply Import for use elsewhere
 
-
-users.js
-```
+```js
 import sql from './db.js'
 
 async function getUsersOver(age) {
@@ -71,7 +70,7 @@ async function insertUser({ name, age }) {
 - postgres([url], [options])
 You can use either a postgres:// url connection string or the options to define your database connection properties. Options in the object will override any present in the url. Options will fall back to the same environment variables as psql.
 
-```
+```sql
 const sql = postgres('postgres://username:password@host:port/database', {
   host                 : '',            // Postgres ip address[s] or domain name[s]
   port                 : 5432,          // Postgres server port[s]
