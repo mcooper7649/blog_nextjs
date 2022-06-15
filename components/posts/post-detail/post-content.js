@@ -64,7 +64,7 @@ function PostContent(props) {
       console.log(className);
       var newlanguage;
       if (className === undefined) {
-        newlanguage = 'markdown';
+        newlanguage = 'js';
         console.log('none');
       } else {
         // newlanguage = 'jsx';

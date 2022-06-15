@@ -6,29 +6,32 @@ isFeatured: true
 date: '2022-05-05'
 ---
 
-## Flutter 
+## Flutter
+
 ![Flutter-HomePage](Flutter-main.png)
 
 Flutter let's you design pixel perfect mobile applications that are App store and Google Play ready. Code in one language and ship in the same day. Flutter is more robust than React native or standard mobile development while also not relying on primitive system specific components.
 
-## Installation 
+## Installation
 
 Install it [here](https://docs.flutter.dev/get-started/install).
 
 Check for installation success by running flutter docter from your shell
 
-``` 
-flutter doctor
+```sh
+ flutter doctor
 ```
 
 ## Create and run a simple Flutter app
+
 To create your first Flutter app and test your setup, follow these steps:
 
 Create a new Flutter app by running the following from the command line:
 
 ```sh
  flutter create my_app
- ```
+```
+
 A my_app directory is created, containing Flutter’s starter app. Enter this directory:
 
 ```sh
