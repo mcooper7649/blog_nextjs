@@ -38,6 +38,157 @@ Firebase is a backend platform for building Web, Android and IOS applications. I
 
 ## Integrating Firebase to your project
 
+1. Create a new file called firebase.js in your src folder
+2. Inside lets create the const firebaseApp and initialize with our firebaseConfig file
+
+   1. Don't forget to import initialize from firebase/app
+
+3. Create const auth = getAuth(firebaseApp)
+4. Import the auth library from 'firebase/auth'
+5. Create const db = getFirestore(firebaseApp)
+6. Import firestore library from 'firebase/firestore'
+7. Export auth and db to be utilized outside of this file.
+
+### Completed Example of 'firebase.js'
+
+```js
+import firebaseConfig from './config/firebaseConfig';
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
+
+const firebaseApp = initializeApp(firebaseConfig);
+
+const auth = getAuth(firebaseApp);
+const db = getFirestore(firebaseApp);
+
+export { auth, db };
+```
+
+## Adding to our Context State
+
+- In our Crypto Demo application we utilize Context API so we can tap into our state object without prop drilling.
+- Since we want to add this to Login and have our user status accessible throughout the application this is an ideal location to configure
+
+1. Add user state to our crypto context.
+
+### CryptoContext Example
+
+```js
+const CryptoContext = ({ children }) => {
+  const [currency, setCurrency] = useState('INR');
+  const [symbol, setSymbol] = useState('₹');
+  const [coins, setCoins] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState(null)
+```
+
+2. Add Material UI Modal Component for Login Button
+
+   1. Inside of Components folder lets make Authentication folder
+   2. Lets add AuthModal.js to the Authentication folder
+      1. Copy Modal of Choice from MUI website and paste into AuthModal.js and rename the modal export to AuthModal
+      2. Inside of Header.js Lets add _<AuthModal/>_ after Select but inside of Toolbar. Remember to Import.
+      3. Lets Remove the default button and add our own next in AuthModal.js
+
+3. Add <Button> from Material-UI
+
+   1. Login will be the content of the button
+   2. variant will be 'contained'
+   3. style get from example below
+   4. Add onClick={handleOpen}
+
+New MUI Button
+
+```js
+<Button
+  variant="contained"
+  style={{
+    width: 85,
+    height: 40,
+    marginLeft: 15,
+    backgroundColor: '#EEBC1D',
+  }}
+>
+  Login
+</Button>
+```
+
+4. Update Fade Component inside our AuthModal
+
+   1. Remove all default tags inside our <div> inside of <Fade>
+   2. Add MUI TABS component to our Auth Modal
+      1. Import Tabs
+      2. Add <AppBar> inside our div
+      3. Notice that tabs needs 'value' and 'handleChange'
+      4. Lets copy that from our TABS code from MUI documentation
+
+5. Add styles to paper for useStyles inside our modal on AuthModal.js
+
+```css
+
+const useStyles = makeStyles((theme) => ({
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  paper: {
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    color: 'white',
+    borderRadius: 10,
+  }
+}));
+```
+
+## Updating the TAB logic
+
+1. Add {value===0 && <Login/>} inside our AuthMOdal After </AppBar>
+2. Add {value ===1 && <SignUp/>} inside our AuthMOdal After </AppBar>
+3. Create Login and SignUp Components Inside our Authentication Folder
+
+## Configuring Login & Signup
+
+1. Import Login and SignUp to AuthModal.js
+2. We want to use handleClose method inside our Login and SignUp Componenents
+   1. Lets pass handleClose down as a prop
+   2. Add props inside our Login And SignUp Components so we can use them.
+
+### Example of HandleClose
+
+```js
+{
+  value === 0 && <Login handleClose={handleClose} />;
+}
+{
+  value === 1 && <SignUp handleClose={handleClose} />;
+}
+```
+
+3. Inside of our Signup.js
+   1. Configure useState hook for email, password and confirmPassword, set default state to ""
+   2. In our Return we will use the Box Component from MUI core
+   3. Import Box and add the following attributes
+   4. Import TextField and put inside of our Box with the following attributes
+   ```js
+   return (
+     <Box
+       p={3}
+       style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
+     >
+       <TextField
+         variant="outlined"
+         type="email"
+         label="Enter Email"
+         value={email}
+         onChange={() => setEmail(e.target.value)}
+         fullWidth
+       ></TextField>
+     </Box>
+   );
+   ```
+
 ## Cons of Google Firebase
 
 1. If not properly managed, the cost of maintaining Firebase on a pay-as-you-go service accumulates as reads and writes increase. So maintenance costs can spike at some points.
