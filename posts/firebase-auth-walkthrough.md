@@ -16,13 +16,13 @@ date: '2022-06-16'
 - Original Crypto Tracker [Tutorial](https://www.youtube.com/watch?v=QA6oTpMZp84&t=0s)
 -
 
+![FireBase-Main](firebaseAuth-main.png)
+
 ## What is Firebase?
 
 Firebase concept is simple. When you build a client-side app with JavaScript or any of its frameworks, for instance, Google Firebase can turn this into a serverless app in no time. It also removes the need to manage databases yourself, as it does that for you.
 
 Firebase is a backend platform for building Web, Android and IOS applications. It offers real time database, different APIs, multiple authentication types and hosting platform.
-
-![FireBase-Main](firebaseAuth-main.png)
 
 ## Adding Firebase
 
@@ -38,7 +38,7 @@ Firebase is a backend platform for building Web, Android and IOS applications. I
    4. add firebaseConfig.js inside config folder inside of src and paste our config
    5. export default firebaseConfig
 
-## Choosing our Firebase BUILD
+## Choosing our Firebase Build
 
 1. In this project we want to choose Authentication
 2. We want to add Email/Password for Native providers
