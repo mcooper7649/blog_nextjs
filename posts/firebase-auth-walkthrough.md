@@ -8,13 +8,11 @@ date: '2022-06-16'
 
 ## Useful Links
 
-- Starting [Github-Repo](https://github.com/piyush-eon/react-crypto-tracker)
-
 - Final [Github-Repo](https://github.com/mcooper7649/react-crypto-hunter) of Crypto Hunter
-- [Live](https://legendary-zuccutto-146af3.netlify.app/)
-- Referenced [Tutorial-RoadsideCoder](https://www.youtube.com/watch?v=8NMJxyDwP6A&t=2585s)
+- [Live-Site](https://legendary-zuccutto-146af3.netlify.app/)
+- User Auth and Watchlist [Tutorial](https://www.youtube.com/watch?v=8NMJxyDwP6A&t=2585s)
 - Original Crypto Tracker [Tutorial](https://www.youtube.com/watch?v=QA6oTpMZp84&t=0s)
--
+- Starting [Github-Repo](https://github.com/piyush-eon/react-crypto-tracker)
 
 ![FireBase-Main](firebaseAuth-main.png)
 
@@ -36,7 +34,8 @@ Firebase is a backend platform for building Web, Android and IOS applications. I
       - _npm i firebase_
    3. Copy config file firebase provides
    4. add firebaseConfig.js inside config folder inside of src and paste our config
-   5. export default firebaseConfig
+   5. Recommend add .gitignore and configuring .env file for firebaseConfig
+   6. export default firebaseConfig
 
 ## Choosing our Firebase Build
 
