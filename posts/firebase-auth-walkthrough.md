@@ -6,7 +6,17 @@ isFeatured: true
 date: '2022-06-16'
 ---
 
-## What is firebase?
+## Useful Links
+
+- Starting [Github-Repo](https://github.com/piyush-eon/react-crypto-tracker)
+
+- Final [Github-Repo](https://github.com/mcooper7649/react-crypto-hunter) of Crypto Hunter
+- [Live](https://legendary-zuccutto-146af3.netlify.app/)
+- Referenced [Tutorial-RoadsideCoder](https://www.youtube.com/watch?v=8NMJxyDwP6A&t=2585s)
+- Original Crypto Tracker [Tutorial](https://www.youtube.com/watch?v=QA6oTpMZp84&t=0s)
+-
+
+## What is Firebase?
 
 Firebase concept is simple. When you build a client-side app with JavaScript or any of its frameworks, for instance, Google Firebase can turn this into a serverless app in no time. It also removes the need to manage databases yourself, as it does that for you.
 
@@ -30,7 +40,7 @@ Firebase is a backend platform for building Web, Android and IOS applications. I
 
 ## Choosing our Firebase BUILD
 
-1. In this project we want to chhose Authentication
+1. In this project we want to choose Authentication
 2. We want to add Email/Password for Native providers
 3. Google for Additional Providers
    1. Confirm Project public-facing-name, typically default is fine.
@@ -400,26 +410,26 @@ const handleSubmit = () => {
 
 ## Try/Catch Error Handling with Firebase
 
-    ```js
-    import { auth } from '../../firebase';
+```js
+import { auth } from '../../firebase';
 
-    try {
-      const result = await createUserWithEmailAndPassword(auth);
-      setAlert({
-        open: true,
-        message: `Sign Up Successful. Welcome ${result.user.email}`,
-        type: 'success',
-      });
-      handleClose();
-    } catch (error) {
-      setAlert({
-        open: true,
-        message: error.message,
-        type: 'error',
-      });
-      return;
-    }
-    ```
+try {
+  const result = await createUserWithEmailAndPassword(auth);
+  setAlert({
+    open: true,
+    message: `Sign Up Successful. Welcome ${result.user.email}`,
+    type: 'success',
+  });
+  handleClose();
+} catch (error) {
+  setAlert({
+    open: true,
+    message: error.message,
+    type: 'error',
+  });
+  return;
+}
+```
 
 ### Configuring our Login.js HandleSubmit
 
@@ -973,7 +983,3 @@ const removeFromWatchList = async () => {
 - With Firebase, it's pretty simple to connect and use built-in third-party authentication providers, including Google, Facebook, Twitter, among others.
 
 Learn more about it [here](https://v4.mui.com/styles/api/#makestyles-styles-options-hook)
-
-```
-
-```
