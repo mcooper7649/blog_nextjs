@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { AnimatePresence, motion } from 'framer-motion/dist/framer-motion';
+import VisibilitySensor from 'react-visibility-sensor';
 
 import classes from './post-item.module.css';
 
@@ -25,7 +27,7 @@ function PostItem(props) {
               alt={title}
               width={300}
               height={200}
-              layout='responsive'
+              layout="responsive"
             />
           </div>
           <div className={classes.content}>

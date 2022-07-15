@@ -28,13 +28,8 @@
 .hero h1 {
   font-size: var(--size-16);
   margin: var(--size-4) 0;
-  color: var(--color-primary-400);
-}
-
-.hero p {
-  font-size: var(--size-6);
   color: var(--color-gray-700);
-  width: 90%;
-  max-width: 40rem;
-  margin: auto;
+  font-stretch: extra-expanded;
+  font-variant: small-caps;
+  font-family: inherit;
 }

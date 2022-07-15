@@ -9,6 +9,7 @@
     "export": "next export"
   },
   "dependencies": {
+    "framer-motion": "^6.5.1",
     "gray-matter": "^4.0.2",
     "mongodb": "^3.6.4",
     "next": "10.0.6",
@@ -18,6 +19,7 @@
     "react-markdown": "^6.0.0",
     "react-syntax-highlighter": "^15.4.3",
     "react-syntax-highlighter-virtualized-renderer": "^1.1.0",
+    "react-visibility-sensor": "^5.1.1",
     "rehype-highlight": "^5.0.2"
   }
 }
