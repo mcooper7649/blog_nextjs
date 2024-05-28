@@ -12,21 +12,22 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
-    "framer-motion": "^6.5.1",
     "gray-matter": "^4.0.2",
     "mongodb": "^3.6.4",
-    "next": "10.0.6",
+    "next": "14.2.3",
     "node-fetch": "^2.6.7",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-markdown": "^6.0.0",
     "react-syntax-highlighter": "^15.4.3",
     "react-syntax-highlighter-virtualized-renderer": "^1.1.0",
     "react-visibility-sensor": "^5.1.1",
     "rehype-highlight": "^5.0.2"
   },
+  "engines": {
+    "node": "18.x"
+  },
   "devDependencies": {
-    "eslint": "^9.3.0",
     "prettier": "^3.2.5"
   }
 }

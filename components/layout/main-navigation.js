@@ -7,7 +7,6 @@ import {
   faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
 import classes from "./main-navigation.module.css";
-import { motion } from "framer-motion/dist/framer-motion";
 
 function MainNavigation() {
   return (
@@ -19,7 +18,7 @@ function MainNavigation() {
       </Link>
       <nav className={classes.menu}>
         <ul>
-          <motion.li
+          <li
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             className={classes.menuItem}
@@ -30,15 +29,15 @@ function MainNavigation() {
                 Posts
               </a>
             </Link>
-          </motion.li>
-          <motion.li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+          </li>
+          <li whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
             <Link href="/contact">
               <a>
                 <FontAwesomeIcon icon={faEnvelope} />
                 Contact
               </a>
             </Link>
-          </motion.li>
+          </li>
         </ul>
       </nav>
     </header>
