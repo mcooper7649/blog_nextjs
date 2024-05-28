@@ -1,17 +1,17 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { AnimatePresence, motion } from 'framer-motion/dist/framer-motion';
-import VisibilitySensor from 'react-visibility-sensor';
+import Link from "next/link";
+import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion/dist/framer-motion";
+import VisibilitySensor from "react-visibility-sensor";
 
-import classes from './post-item.module.css';
+import classes from "./post-item.module.css";
 
 function PostItem(props) {
   const { title, image, excerpt, date, slug } = props.post;
 
-  const formattedDate = new Date(date).toLocaleDateString('en-US', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
+  const formattedDate = new Date(date).toLocaleDateString("en-US", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
   });
 
   const imagePath = `/images/posts/${slug}/${image}`;
