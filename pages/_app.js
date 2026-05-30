@@ -17,22 +17,26 @@ function MyApp({ Component, pageProps }) {
           name="title"
           content="Mikes' Dev Blog | NextJS"
           property="og:title"
+          key="og-title"
         />
         <meta
           name="description"
           property="og:description"
           content="A blog about Modern Frameworks and Elegant web design. Built using the Nextjs platform, We can store our content using markdown files and have our server render the content beautifully."
+          key="og-description"
         />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="image"
           property="og:image"
           content="https://img001.prntscr.com/file/img001/CKeX-TwVRx63qFdG-jxsUg.png"
+          key="og-image"
         />
         <meta
           name="url"
           property="og:url"
-          content="blog-nextjs-fawn-chi.vercel.app"
+          content="https://blog.mycodedojo.com"
+          key="og-url"
         />
         <meta name="author" property="og:author" content="Michael Cooper" />
       </Head>
