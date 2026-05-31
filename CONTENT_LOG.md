@@ -6,3 +6,4 @@
 | 2026-05-30 | chore(seo) | Add per-post OpenGraph and Twitter Card meta tags to post detail page |
 | 2026-05-31 | docs | Replace generic create-next-app README with real project documentation |
 | 2026-05-31 | post | New post "Self-Hosting a Homelab with Docker Compose" — declarative Compose patterns, healthchecks, named volumes, and self-running pg_dump backups. |
+| 2026-05-31 | post | New post "Automating My Homelab with n8n" — self-hosted n8n in Docker, a webhook→Code node→notify workflow with accurate Code node API, and why it beats cron scripts. |
