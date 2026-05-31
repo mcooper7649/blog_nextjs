@@ -25,7 +25,7 @@
     "rehype-highlight": "^5.0.2"
   },
   "engines": {
-    "node": "18.x"
+    "node": "22.x"
   },
   "devDependencies": {
     "prettier": "^3.2.5"
