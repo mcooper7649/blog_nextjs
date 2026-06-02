@@ -39,6 +39,12 @@ function MyApp({ Component, pageProps }) {
           key="og-url"
         />
         <meta name="author" property="og:author" content="Michael Cooper" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Mike's Dev Blog RSS Feed"
+          href="https://blog.mycodedojo.com/feed.xml"
+        />
       </Head>
       <Component {...pageProps} />
     </Layout>
