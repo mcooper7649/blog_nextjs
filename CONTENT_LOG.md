@@ -10,3 +10,4 @@
 | 2026-05-31 | chore | bump Node engines to 22.x to unblock Vercel deploys |
 | 2026-06-01 | post | New post "TypeScript in React: Practical Typing Patterns That Actually Help" — typed props, useState generics, event handler types, API responses, and generic custom hooks. |
 | 2026-06-02 | chore(seo) | Add RSS 2.0 feed at /feed.xml with XML escaping, RFC 822 dates, atom:link self-ref, auto-discovery <link> in _app.js, and robots.txt reference. |
+| 2026-06-03 | post | New post "Next.js App Router: What Changed and Why It Matters" — RSC default, file conventions, layouts, use client directive, Route Handlers vs API routes. |
