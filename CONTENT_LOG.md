@@ -11,3 +11,4 @@
 | 2026-06-01 | post | New post "TypeScript in React: Practical Typing Patterns That Actually Help" — typed props, useState generics, event handler types, API responses, and generic custom hooks. |
 | 2026-06-02 | chore(seo) | Add RSS 2.0 feed at /feed.xml with XML escaping, RFC 822 dates, atom:link self-ref, auto-discovery <link> in _app.js, and robots.txt reference. |
 | 2026-06-03 | post | New post "Next.js App Router: What Changed and Why It Matters" — RSC default, file conventions, layouts, use client directive, Route Handlers vs API routes. |
+| 2026-06-04 | chore(seo) | Fix duplicate viewport meta, replace fragile third-party OG image with self-hosted URL, fix apostrophe typo, improve home page title/description and canonical link, remove stale og:publish_date and unused Hero import. |

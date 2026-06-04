@@ -9,27 +9,21 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
-          name="publish_date"
-          property="og:publish_date"
-          content="2022-03-27T00:00:00-0600"
-        />
-        <meta
           name="title"
-          content="Mikes' Dev Blog | NextJS"
+          content="Mike's Dev Blog"
           property="og:title"
           key="og-title"
         />
         <meta
           name="description"
           property="og:description"
-          content="A blog about Modern Frameworks and Elegant web design. Built using the Nextjs platform, We can store our content using markdown files and have our server render the content beautifully."
+          content="Practical tutorials on React, Next.js, TypeScript, Kotlin, Docker, and self-hosting — written by Michael Cooper."
           key="og-description"
         />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="image"
           property="og:image"
-          content="https://img001.prntscr.com/file/img001/CKeX-TwVRx63qFdG-jxsUg.png"
+          content="https://blog.mycodedojo.com/images/site/logo.png"
           key="og-image"
         />
         <meta
