@@ -13,3 +13,4 @@
 | 2026-06-03 | post | New post "Next.js App Router: What Changed and Why It Matters" — RSC default, file conventions, layouts, use client directive, Route Handlers vs API routes. |
 | 2026-06-04 | chore(seo) | Fix duplicate viewport meta, replace fragile third-party OG image with self-hosted URL, fix apostrophe typo, improve home page title/description and canonical link, remove stale og:publish_date and unused Hero import. |
 | 2026-06-05 | post | New post "Self-Hosting RustDesk: A Private Remote Desktop Server in Under 10 Minutes" — hbbs/hbbr Docker Compose setup, port table, public key extraction, ufw/firewalld rules, client config, and security notes. |
+| 2026-06-06 | refactor(post) | Expand thin "Postgres Notes" stub into full "PostgreSQL for Node.js Developers" guide — Docker quickstart, CREATE/INSERT/SELECT/JOIN patterns, indexes, partial indexes, EXPLAIN ANALYZE, transactions, postgres npm package with parameterized queries, and sql.begin() transactions. |
