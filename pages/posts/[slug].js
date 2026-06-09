@@ -28,6 +28,34 @@ function PostDetailPage(props) {
         <meta name='twitter:title' content={post.title} />
         <meta name='twitter:description' content={post.excerpt} />
         <meta name='twitter:image' content={imageUrl} />
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'BlogPosting',
+              headline: post.title,
+              description: post.excerpt,
+              image: imageUrl,
+              datePublished: post.date,
+              author: {
+                '@type': 'Person',
+                name: 'Michael Cooper',
+                url: 'https://www.mycodedojo.com',
+              },
+              publisher: {
+                '@type': 'Person',
+                name: 'Michael Cooper',
+                url: 'https://www.mycodedojo.com',
+              },
+              url: postUrl,
+              mainEntityOfPage: {
+                '@type': 'WebPage',
+                '@id': postUrl,
+              },
+            }),
+          }}
+        />
       </Head>
       <PostContent post={props.post} />
     </Fragment>

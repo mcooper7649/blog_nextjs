@@ -19,6 +19,24 @@ function HomePage(props) {
         <meta name="twitter:title" content="Mike's Dev Blog — React, Next.js, TypeScript & Homelab" />
         <meta name="twitter:description" content="Practical tutorials on React, Next.js, TypeScript, Kotlin, Docker, and self-hosting — written by Michael Cooper." />
         <meta name="twitter:image" content="https://blog.mycodedojo.com/images/site/logo.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: "Mike's Dev Blog",
+              url: 'https://blog.mycodedojo.com',
+              description:
+                'Practical tutorials on React, Next.js, TypeScript, Kotlin, Docker, and self-hosting — written by Michael Cooper.',
+              author: {
+                '@type': 'Person',
+                name: 'Michael Cooper',
+                url: 'https://www.mycodedojo.com',
+              },
+            }),
+          }}
+        />
       </Head>
       <FeaturedPosts posts={props.posts} />
     </Fragment>
