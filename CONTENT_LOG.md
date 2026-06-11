@@ -18,3 +18,4 @@
 | 2026-06-08 | post | New post "Running Home Assistant in Docker: From Zero to Your First Automation" — Container mode Compose setup, host networking for mDNS, config layout, two real automations (presence-based lights, open-door alert with debounce), and keeping config in Git. |
 | 2026-06-09 | chore(seo) | Add JSON-LD structured data (Schema.org BlogPosting on post pages, WebSite on home page) to improve Google rich-result eligibility and author attribution. |
 | 2026-06-10 | post | New post "TanStack Query v5: Stop Managing Server State by Hand" — useQuery, useMutation, query invalidation, staleTime/gcTime/enabled config, and DevTools. |
+| 2026-06-11 | feat(ux) | Add reading-time estimate (word count ÷ 200 wpm) to post cards and post header |

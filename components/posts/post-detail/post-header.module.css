@@ -10,12 +10,26 @@
   gap: 1rem;
 }
 
+.titleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
 .header h1 {
   font-size: var(--size-8);
   color: var(--color-primary-500);
   margin: 0;
   line-height: initial;
   text-align: center;
+}
+
+.meta {
+  font-style: italic;
+  color: var(--color-grey-300);
+  font-size: 0.9rem;
+  margin: 0;
 }
 
 .header img {
@@ -29,6 +43,10 @@
     margin: var(--size-8) 0;
     flex-direction: row;
     align-items: flex-end;
+  }
+
+  .titleGroup {
+    align-items: flex-start;
   }
 
   .header h1 {

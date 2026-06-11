@@ -4,7 +4,7 @@ import Image from "next/image";
 import classes from "./post-item.module.css";
 
 function PostItem(props) {
-  const { title, image, excerpt, date, slug } = props.post;
+  const { title, image, excerpt, date, slug, readingTime } = props.post;
 
   const formattedDate = new Date(date).toLocaleDateString("en-US", {
     day: "numeric",
@@ -30,7 +30,11 @@ function PostItem(props) {
           </div>
           <div className={classes.content}>
             <h3>{title}</h3>
-            <time>{formattedDate}</time>
+            <div className={classes.meta}>
+              <time>{formattedDate}</time>
+              <span aria-hidden="true">·</span>
+              <span>{readingTime} min read</span>
+            </div>
             <p>{excerpt}</p>
           </div>
         </a>

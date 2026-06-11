@@ -46,9 +46,14 @@
   font-size: var(--size-6);
 }
 
-.content time {
+.meta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
   font-style: italic;
   color: var(--color-grey-300);
+  font-size: 0.875em;
 }
 
 .content p {
