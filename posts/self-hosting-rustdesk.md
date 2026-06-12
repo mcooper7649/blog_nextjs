@@ -1,7 +1,7 @@
 ---
 title: 'Self-Hosting RustDesk: A Private Remote Desktop Server in Under 10 Minutes'
 date: '2026-06-05'
-image: cover.png
+image: cover.jpg
 excerpt: Replace TeamViewer and AnyDesk with your own RustDesk relay server — complete Docker Compose setup, firewall rules, and client configuration.
 isFeatured: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'useCallback and useMemo: When They Actually Help'
 date: '2026-06-12'
-image: cover.png
+image: cover.jpg
 excerpt: Most React devs either ignore these hooks or wrap everything in them "just to be safe." Both are wrong. Here is exactly when each one earns its place.
 isFeatured: false
 ---

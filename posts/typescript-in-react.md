@@ -1,7 +1,7 @@
 ---
 title: 'TypeScript in React: Practical Typing Patterns That Actually Help'
 date: '2026-06-01'
-image: cover.png
+image: cover.jpg
 excerpt: TypeScript stops being noise and starts being useful the moment you learn a handful of patterns — typed props, useState generics, event handlers, and API responses.
 isFeatured: false
 ---

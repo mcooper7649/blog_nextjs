@@ -1,7 +1,7 @@
 ---
 title: 'TanStack Query v5: Stop Managing Server State by Hand'
 date: '2026-06-10'
-image: cover.png
+image: cover.jpg
 excerpt: If you are still fetching data with useEffect and useState, TanStack Query will feel like a superpower — caching, deduplication, background refetching, and mutations, all handled for you.
 isFeatured: false
 ---

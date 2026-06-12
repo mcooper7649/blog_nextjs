@@ -1,7 +1,7 @@
 ---
 title: 'Running Home Assistant in Docker: From Zero to Your First Automation'
 date: '2026-06-08'
-image: cover.png
+image: cover.jpg
 excerpt: How I run Home Assistant in a single Docker container, keep the config in Git, and build automations that actually make life easier.
 isFeatured: false
 ---

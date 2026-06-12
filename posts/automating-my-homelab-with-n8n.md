@@ -1,7 +1,7 @@
 ---
 title: 'Automating My Homelab with n8n'
 date: '2026-05-31'
-image: cover.png
+image: cover.jpg
 excerpt: I replaced a pile of brittle cron scripts with n8n — a self-hosted automation tool where workflows are visual, debuggable, and triggered by real webhooks.
 isFeatured: false
 ---

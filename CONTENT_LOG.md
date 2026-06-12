@@ -20,3 +20,4 @@
 | 2026-06-10 | post | New post "TanStack Query v5: Stop Managing Server State by Hand" — useQuery, useMutation, query invalidation, staleTime/gcTime/enabled config, and DevTools. |
 | 2026-06-11 | feat(ux) | Add reading-time estimate (word count ÷ 200 wpm) to post cards and post header |
 | 2026-06-12 | post | New post "useCallback and useMemo: When They Actually Help" — referential equality, stabilizing fn refs for useEffect deps and React.memo children, memoizing expensive computations, and when NOT to bother. |
+| 2026-06-12 | fix(images) | Backfill 7 relevant AI cover illustrations (gpt-image-1) replacing gradient/missing covers; add scripts/gen-cover.mjs so future posts get real covers. |

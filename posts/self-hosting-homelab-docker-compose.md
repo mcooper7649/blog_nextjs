@@ -1,7 +1,7 @@
 ---
 title: 'Self-Hosting a Homelab with Docker Compose'
 date: '2026-05-31'
-image: cover.png
+image: cover.jpg
 excerpt: How I run my entire homelab from a single, version-controlled Docker Compose file — with healthchecks, named volumes, and backups that I never have to think about.
 isFeatured: true
 ---
