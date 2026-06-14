@@ -8,7 +8,7 @@ date: '2022-06-06'
 
 ## What is React Helmet Async?
 
-![React-Helmet-Async-NPM](Flutter-main.png)
+![React-Helmet-Async](react-helmet-main.png)
 
 This package is a fork of React Helmet. <Helmet> usage is synonymous, but server and client now requires <HelmetProvider> to encapsulate state per request.
 
