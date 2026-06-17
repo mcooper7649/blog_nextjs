@@ -22,3 +22,4 @@
 | 2026-06-12 | post | New post "useCallback and useMemo: When They Actually Help" — referential equality, stabilizing fn refs for useEffect deps and React.memo children, memoizing expensive computations, and when NOT to bother. |
 | 2026-06-12 | fix(images) | Backfill 7 relevant AI cover illustrations (gpt-image-1) replacing gradient/missing covers; add scripts/gen-cover.mjs so future posts get real covers. |
 | 2026-06-12 | post | New post "Docker Multi-Stage Builds: Smaller Images, Faster Deploys" — builder/runner pattern, Alpine bases, Next.js standalone output, layer caching tricks, and build-arg secret hygiene. |
+| 2026-06-17 | post | New post "GitHub Actions CI/CD: Automate Tests, Lint, and Deploy for Your Next.js App" — ci.yml workflow, npm ci caching, tsc --noEmit type-checking, branch protection rules, env var secrets, Vercel deploy gate. |
