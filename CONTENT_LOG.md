@@ -22,3 +22,4 @@
 | 2026-06-12 | post | New post "useCallback and useMemo: When They Actually Help" — referential equality, stabilizing fn refs for useEffect deps and React.memo children, memoizing expensive computations, and when NOT to bother. |
 | 2026-06-12 | fix(images) | Backfill 7 relevant AI cover illustrations (gpt-image-1) replacing gradient/missing covers; add scripts/gen-cover.mjs so future posts get real covers. |
 | 2026-06-12 | post | New post "Docker Multi-Stage Builds: Smaller Images, Faster Deploys" — builder/runner pattern, Alpine bases, Next.js standalone output, layer caching tricks, and build-arg secret hygiene. |
+| 2026-06-20 | chore(perf) | Compress 17 oversized PNG images with pngquant (quality 72-92) — ~12 MB removed from repo; Flutter-main 3.4MB→708KB, nextjs-file-based-routing 2.5MB→780KB, max.png 6.9MB→2.8MB, and 14 others. Build verified passing. |
