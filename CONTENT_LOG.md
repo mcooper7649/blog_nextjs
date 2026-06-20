@@ -26,3 +26,4 @@
 | 2026-09-14 | post | New post "Zod: Stop Trusting Your API Responses at Runtime" — runtime schema validation, type inference with z.infer, API response parsing, env var validation, and Zod + React Hook Form. |
 | 2026-09-22 | post | New TIL post "Object.groupBy() — JavaScript Finally Has a Native Group By" — ES2024 Object.groupBy and Map.groupBy, null-prototype result, React grouped-list example, and browser/Node support. |
 | 2026-06-15 | post | New post "Building a REST API with Node.js, Express, and PostgreSQL" |
+| 2026-06-20 | chore(perf) | Compress 17 oversized PNG images, saving about 7 MB |
