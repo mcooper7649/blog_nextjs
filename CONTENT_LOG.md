@@ -27,3 +27,4 @@
 | 2026-09-22 | post | New TIL post "Object.groupBy() — JavaScript Finally Has a Native Group By" — ES2024 Object.groupBy and Map.groupBy, null-prototype result, React grouped-list example, and browser/Node support. |
 | 2026-06-15 | post | New post "Building a REST API with Node.js, Express, and PostgreSQL" |
 | 2026-06-20 | chore(perf) | Compress 17 oversized PNG images, saving about 7 MB |
+| 2026-06-22 | post | New post "Kotlin + Jetpack Compose: Build Your First Android Screen Without XML" |
