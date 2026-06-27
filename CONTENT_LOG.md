@@ -23,3 +23,4 @@
 | 2026-06-12 | fix(images) | Backfill 7 relevant AI cover illustrations (gpt-image-1) replacing gradient/missing covers; add scripts/gen-cover.mjs so future posts get real covers. |
 | 2026-06-12 | post | New post "Docker Multi-Stage Builds: Smaller Images, Faster Deploys" — builder/runner pattern, Alpine bases, Next.js standalone output, layer caching tricks, and build-arg secret hygiene. |
 | 2026-06-21 | refactor(post) | Expand thin "Bootstrap Framework" stub (34 lines, alpha install, typo) into full Bootstrap 5 React guide — grid, breakpoints table, utility classes, components, icons; fix broken inline image in react-helmet post (Flutter-main.png → react-helmet-main.png). |
+| 2026-06-27 | refactor(post) | Rewrite outdated "Material-UI makeStyles" post to cover MUI v5+ — sx prop, styled() with theme access, shouldForwardProp, createTheme with palette.mode, useTheme, and migration note away from deprecated JSS/makeStyles. |
