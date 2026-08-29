@@ -1,58 +1,284 @@
 ---
-title: 'Application Programming Interfaces'
-date: '2022-06-06'
+title: 'Working with REST APIs in JavaScript'
+date: '2026-08-29'
 image: api-main.png
-excerpt: API stands for application programming interface, a concept that applies everywhere from command-line tools to enterprise Java code to Ruby on Rails web apps. An API is a way to programmatically interact with a separate software component or resource.
+excerpt: A practical guide to fetching, posting, and handling errors from REST APIs using the Fetch API and async/await in modern JavaScript.
 isFeatured: true
 ---
 
-## What is an API? 
+REST APIs are the backbone of almost every web application. Whether you're pulling weather data, authenticating users, or submitting a form to a backend, you're talking to an API. This post covers how to work with them confidently in modern JavaScript — no third-party HTTP library required.
 
-API stands for application programming interface, a concept that applies everywhere from command-line tools to enterprise Java code to Ruby on Rails web apps. An API is a way to programmatically interact with a separate software component or resource.
+## What Is a REST API?
 
-Unless you write every single line of code from scratch, you’re going to be interacting with external software components, each with its own API. Even if you do write something entirely from scratch, a well-designed software application will have internal APIs to help organize code and make components more reusable. And there are numerous public APIs that allow you to tap into functionality developed elsewhere over the web.
+REST (Representational State Transfer) is an architectural style, not a strict protocol. A REST API exposes resources at URLs and lets clients manipulate them using standard HTTP methods:
 
+| Method | Meaning |
+|--------|---------|
+| `GET` | Read a resource |
+| `POST` | Create a resource |
+| `PUT` / `PATCH` | Replace / partially update a resource |
+| `DELETE` | Delete a resource |
 
-### Types of APIs
+The server responds with a status code and usually a JSON body. Status codes matter: `200 OK`, `201 Created`, `400 Bad Request`, `401 Unauthorized`, `404 Not Found`, `500 Internal Server Error`.
 
-API stands for Application Programming Interface, which is a mechanism that allows the interaction between two applications using a set of rules.
+## The Fetch API
 
-APIs are beneficial because they allow developers to add specific functionality to an application, without having to write all of the code themselves. APIs also allow developers to access data from other applications. For example, when bloggers put their Twitter handle on their blog’s sidebar, WordPress enables this by using Twitter’s API.
+Modern browsers and Node.js 18+ include `fetch` natively. No `npm install` needed.
 
-### Main types of Web APIs
-There are four main types of APIs:
+### A Basic GET Request
 
-- Open APIs: Also known as Public API, there are no restrictions to access these types of APIs because they are publicly available.
-- Partner APIs: A developer needs specific rights or licenses in order to access this type of API because they are not available to the public.
-- Internal APIs: Also known as Private APIs, only internal systems expose this type of API. These are usually designed for internal use within a company. The company uses this type of API among the different internal teams to be able to improve its products and services.
-- Composite APIs: This type of API combines different data and service APIs. It is a sequence of tasks that run synchronously as a result of the execution, and not at the request of a task. Its main uses are to speed up the process of execution and improve the performance of the listeners in the web interfaces.
+```js
+async function getUser(userId) {
+  const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
 
-## Web service APIs
+  if (!response.ok) {
+    throw new Error(`Request failed: ${response.status}`);
+  }
 
-- SOAP
-  - SOAP (Simple Object Access Protocol): This is a protocol that uses XML as a format to transfer data. Its main function is to define the structure of the messages and methods of communication. It also uses WSDL, or Web Services Definition Language, in a machine-readable document to publish a definition of its interface.
-  - Added data types
-  - Envelope wraps header and body
-- XML-RPC
-  - XML-RPC: This is a protocol that uses a specific XML format to transfer data compared to SOAP that uses a proprietary XML format. It is also older than SOAP. XML-RPC uses minimum bandwidth and is much simpler than SOAP. 
-- JSON-RPC
-  - JSON-RPC: This protocol is similar to XML-RPC but instead of using XML format to transfer data it uses JSON
-- REST
-  - REST (Representational State Transfer): REST is not a protocol like the other web services, instead, it is a set of architectural principles. The REST service needs to have certain characteristics, including simple interfaces, which are resources identified easily within the request and manipulation of resources using the interface.
-  - Added GET,POST,PUT,DELETE http methods and caching
-  - Allows Middleware
-  - Uniform interface
-  - Sets constraints
-  - replaced SOAP
-- GraphQL
-  - GraphQL Rest APIs were too chatty and downloads to much data
-  - GraphQL makes a Single Precise Request and returns an all inclusive reply. No need to mix and match endpoints
-  - Uses a Schema to facilitate
-  - Quickly becoming the default but harder to learn.
+  const user = await response.json();
+  return user;
+}
 
+const user = await getUser(1);
+console.log(user.name); // "Leanne Graham"
+```
 
+Two things to note:
+- `fetch` only rejects its promise on **network errors** (DNS failure, no connection). A `404` or `500` does NOT reject — you have to check `response.ok` yourself.
+- `.json()` returns a promise, so you need to `await` it.
 
+### POST — Sending JSON to an API
 
+```js
+async function createPost(title, body, userId) {
+  const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ title, body, userId }),
+  });
 
+  if (!response.ok) {
+    const error = await response.json().catch(() => ({}));
+    throw new Error(error.message ?? `HTTP ${response.status}`);
+  }
 
-Information Sourced from: [Rapid API](https://rapidapi.com/blog/types-of-apis/)
+  return response.json(); // returns the created resource
+}
+
+const post = await createPost('Hello API', 'My first post', 1);
+console.log(post.id); // 101
+```
+
+Always set `Content-Type: application/json` when sending a JSON body, or the server may reject or misparse your request.
+
+### PUT and PATCH
+
+`PUT` replaces the whole resource. `PATCH` applies a partial update. Syntax is the same as `POST` — just change the `method` and point to the resource URL:
+
+```js
+// Full replace
+await fetch(`/api/users/42`, {
+  method: 'PUT',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ name: 'New Name', email: 'new@example.com' }),
+});
+
+// Partial update — only send what changed
+await fetch(`/api/users/42`, {
+  method: 'PATCH',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ name: 'New Name' }),
+});
+```
+
+### DELETE
+
+```js
+const response = await fetch(`/api/posts/101`, { method: 'DELETE' });
+if (!response.ok) throw new Error(`Failed to delete: ${response.status}`);
+// DELETE often returns 204 No Content — don't try to parse a body
+```
+
+## Sending Authentication Headers
+
+Most real APIs require a token. Pass it in the `Authorization` header:
+
+```js
+async function fetchPrivateData(token) {
+  const response = await fetch('https://api.example.com/me', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (response.status === 401) {
+    throw new Error('Unauthorized — check your token');
+  }
+
+  return response.json();
+}
+```
+
+Store tokens in memory or in a secure HttpOnly cookie — never in `localStorage` for sensitive apps.
+
+## Error Handling Done Right
+
+It's tempting to slap a `try/catch` around fetch and call it done, but the error shape matters:
+
+```js
+async function safeFetch(url, options = {}) {
+  let response;
+
+  try {
+    response = await fetch(url, options);
+  } catch (networkError) {
+    // Truly no connection, DNS failure, CORS preflight blocked, etc.
+    throw new Error(`Network error: ${networkError.message}`);
+  }
+
+  if (!response.ok) {
+    // Try to parse an error payload from the server
+    let serverMessage = '';
+    try {
+      const body = await response.json();
+      serverMessage = body.message ?? body.error ?? '';
+    } catch {
+      // Server didn't return JSON — that's fine
+    }
+    throw new Error(serverMessage || `HTTP ${response.status} ${response.statusText}`);
+  }
+
+  // 204 No Content — nothing to parse
+  if (response.status === 204) return null;
+
+  return response.json();
+}
+```
+
+Now callers get a useful error message whether the failure is a network outage or a `422 Unprocessable Entity`.
+
+## A Real-World Pattern: Data Fetching Hook in React
+
+Combining everything above into a reusable React hook:
+
+```jsx
+import { useState, useEffect } from 'react';
+
+function useFetch(url) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function load() {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+        const json = await response.json();
+        if (!cancelled) setData(json);
+      } catch (err) {
+        if (!cancelled) setError(err.message);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    }
+
+    load();
+    return () => { cancelled = true; }; // avoid state updates after unmount
+  }, [url]);
+
+  return { data, loading, error };
+}
+
+// Usage
+function UserCard({ userId }) {
+  const { data: user, loading, error } = useFetch(
+    `https://jsonplaceholder.typicode.com/users/${userId}`
+  );
+
+  if (loading) return <p>Loading…</p>;
+  if (error) return <p>Error: {error}</p>;
+  return <h2>{user.name}</h2>;
+}
+```
+
+The `cancelled` flag is crucial: if the component unmounts before the fetch resolves, this prevents a state update on an unmounted component.
+
+> **Tip:** If you find yourself rebuilding this pattern often, look at [TanStack Query](https://blog.mycodedojo.com/posts/tanstack-query-server-state). It handles caching, background refetching, and deduplication on top of exactly this pattern.
+
+## Handling Pagination
+
+Most list endpoints are paginated. Common patterns:
+
+**Offset/limit:**
+```js
+const page = 2;
+const limit = 10;
+const res = await fetch(`/api/posts?page=${page}&limit=${limit}`);
+const { data, total } = await res.json();
+```
+
+**Cursor-based (common in modern APIs):**
+```js
+let cursor = null;
+const all = [];
+
+do {
+  const url = cursor
+    ? `/api/posts?after=${cursor}`
+    : `/api/posts`;
+
+  const res = await fetch(url);
+  const { posts, next } = await res.json();
+
+  all.push(...posts);
+  cursor = next; // null when no more pages
+} while (cursor);
+```
+
+## Query Parameters the Clean Way
+
+Don't build query strings with string concatenation — use `URLSearchParams`:
+
+```js
+const params = new URLSearchParams({
+  q: 'react hooks',
+  sort: 'newest',
+  limit: '20',
+});
+
+const response = await fetch(`/api/search?${params}`);
+```
+
+This handles encoding special characters automatically (spaces → `%20`, `&` inside values, etc.).
+
+## Types of APIs (Quick Reference)
+
+Modern web development mostly uses **REST** and increasingly **GraphQL**, but you'll encounter others:
+
+- **REST** — resource-oriented, HTTP verbs, JSON responses. The dominant choice for new APIs.
+- **GraphQL** — single endpoint, client specifies exact data shape. Great when over-fetching is a real problem (mobile apps, complex dashboards).
+- **gRPC** — binary protocol, extremely fast, used mostly in backend microservices.
+- **WebSockets** — bidirectional, persistent connection. Use for chat, live dashboards, collaborative editing.
+- **SOAP** — XML-based, mostly legacy enterprise. You'll encounter it integrating with older systems.
+
+For 90% of frontend work, REST is the right default. Reach for GraphQL when your data model is genuinely complex and you need that precision.
+
+## Summary
+
+- Always check `response.ok` — fetch only rejects on network failure, not bad status codes.
+- Set `Content-Type: application/json` when POSTing JSON.
+- Pass tokens in the `Authorization` header.
+- Use `URLSearchParams` for clean query strings.
+- The `cancelled` flag pattern prevents state updates after unmount in React hooks.
+- `204 No Content` responses have no body — don't try to parse them.
+
+These patterns cover the vast majority of what you'll need when integrating any third-party or internal API.
