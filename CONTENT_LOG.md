@@ -24,3 +24,4 @@
 | 2026-06-12 | post | New post "Docker Multi-Stage Builds: Smaller Images, Faster Deploys" — builder/runner pattern, Alpine bases, Next.js standalone output, layer caching tricks, and build-arg secret hygiene. |
 | 2026-06-21 | refactor(post) | Expand thin "Bootstrap Framework" stub (34 lines, alpha install, typo) into full Bootstrap 5 React guide — grid, breakpoints table, utility classes, components, icons; fix broken inline image in react-helmet post (Flutter-main.png → react-helmet-main.png). |
 | 2026-09-14 | post | New post "Zod: Stop Trusting Your API Responses at Runtime" — runtime schema validation, type inference with z.infer, API response parsing, env var validation, and Zod + React Hook Form. |
+| 2026-09-15 | chore(seo) | Add full SEO meta (canonical, OG tags, Twitter cards, improved title/description) to /posts and /contact pages |
