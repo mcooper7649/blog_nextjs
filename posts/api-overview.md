@@ -6,53 +6,165 @@ excerpt: API stands for application programming interface, a concept that applie
 isFeatured: true
 ---
 
-## What is an API? 
+## What is an API?
 
-API stands for application programming interface, a concept that applies everywhere from command-line tools to enterprise Java code to Ruby on Rails web apps. An API is a way to programmatically interact with a separate software component or resource.
+An API (Application Programming Interface) is a contract between two pieces of software. One side says "here's what I can do and how to ask me" — the other side calls it without needing to know how it works internally.
 
-Unless you write every single line of code from scratch, you’re going to be interacting with external software components, each with its own API. Even if you do write something entirely from scratch, a well-designed software application will have internal APIs to help organize code and make components more reusable. And there are numerous public APIs that allow you to tap into functionality developed elsewhere over the web.
+You interact with APIs constantly: when a weather widget fetches a forecast, when you log in with Google, when your app saves data to a backend. The browser's own `fetch`, DOM methods, and Node's built-in modules are all APIs too.
 
+## REST: The Dominant Style for Web APIs
 
-### Types of APIs
+REST (Representational State Transfer) isn't a protocol — it's a set of architectural constraints that map naturally onto HTTP. Most public APIs and virtually all modern backend services speak REST.
 
-API stands for Application Programming Interface, which is a mechanism that allows the interaction between two applications using a set of rules.
+### The key ideas
 
-APIs are beneficial because they allow developers to add specific functionality to an application, without having to write all of the code themselves. APIs also allow developers to access data from other applications. For example, when bloggers put their Twitter handle on their blog’s sidebar, WordPress enables this by using Twitter’s API.
+- **Resources over actions** — URLs name *things*, not operations. `/users/42` beats `/getUser?id=42`.
+- **HTTP verbs carry intent** — `GET` reads, `POST` creates, `PUT`/`PATCH` updates, `DELETE` removes.
+- **Stateless** — every request carries all the context the server needs; no session state is stored server-side between calls.
+- **Uniform interface** — consistent URL patterns and status codes let clients be written generically.
 
-### Main types of Web APIs
-There are four main types of APIs:
+### HTTP status codes you'll use every day
 
-- Open APIs: Also known as Public API, there are no restrictions to access these types of APIs because they are publicly available.
-- Partner APIs: A developer needs specific rights or licenses in order to access this type of API because they are not available to the public.
-- Internal APIs: Also known as Private APIs, only internal systems expose this type of API. These are usually designed for internal use within a company. The company uses this type of API among the different internal teams to be able to improve its products and services.
-- Composite APIs: This type of API combines different data and service APIs. It is a sequence of tasks that run synchronously as a result of the execution, and not at the request of a task. Its main uses are to speed up the process of execution and improve the performance of the listeners in the web interfaces.
+| Range | Meaning | Common codes |
+|-------|---------|--------------|
+| 2xx | Success | 200 OK, 201 Created, 204 No Content |
+| 3xx | Redirect | 301 Moved Permanently, 304 Not Modified |
+| 4xx | Client error | 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, 422 Unprocessable Entity |
+| 5xx | Server error | 500 Internal Server Error, 503 Service Unavailable |
 
-## Web service APIs
+## Calling a REST API with `fetch`
 
-- SOAP
-  - SOAP (Simple Object Access Protocol): This is a protocol that uses XML as a format to transfer data. Its main function is to define the structure of the messages and methods of communication. It also uses WSDL, or Web Services Definition Language, in a machine-readable document to publish a definition of its interface.
-  - Added data types
-  - Envelope wraps header and body
-- XML-RPC
-  - XML-RPC: This is a protocol that uses a specific XML format to transfer data compared to SOAP that uses a proprietary XML format. It is also older than SOAP. XML-RPC uses minimum bandwidth and is much simpler than SOAP. 
-- JSON-RPC
-  - JSON-RPC: This protocol is similar to XML-RPC but instead of using XML format to transfer data it uses JSON
-- REST
-  - REST (Representational State Transfer): REST is not a protocol like the other web services, instead, it is a set of architectural principles. The REST service needs to have certain characteristics, including simple interfaces, which are resources identified easily within the request and manipulation of resources using the interface.
-  - Added GET,POST,PUT,DELETE http methods and caching
-  - Allows Middleware
-  - Uniform interface
-  - Sets constraints
-  - replaced SOAP
-- GraphQL
-  - GraphQL Rest APIs were too chatty and downloads to much data
-  - GraphQL makes a Single Precise Request and returns an all inclusive reply. No need to mix and match endpoints
-  - Uses a Schema to facilitate
-  - Quickly becoming the default but harder to learn.
+Modern JavaScript makes consuming an API straightforward. Here's a reusable helper that handles JSON, throws on error status codes, and types the response:
 
+```ts
+// lib/api.ts
+async function apiFetch<T>(url: string, options?: RequestInit): Promise<T> {
+  const res = await fetch(url, {
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    ...options,
+  });
 
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`${res.status} ${res.statusText}: ${body}`);
+  }
 
+  return res.json() as Promise<T>;
+}
 
+// GET
+const user = await apiFetch<{ id: number; name: string }>('/api/users/42');
 
+// POST with a body
+const newPost = await apiFetch<{ id: number }>('/api/posts', {
+  method: 'POST',
+  body: JSON.stringify({ title: 'Hello', body: 'World' }),
+});
+```
 
-Information Sourced from: [Rapid API](https://rapidapi.com/blog/types-of-apis/)
+## Building a REST Endpoint in Node.js
+
+If you're using Next.js API routes (Pages Router), a resource endpoint looks like this:
+
+```ts
+// pages/api/users/[id].ts
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+type User = { id: number; name: string; email: string };
+
+const USERS: User[] = [
+  { id: 1, name: 'Alice', email: 'alice@example.com' },
+  { id: 2, name: 'Bob',   email: 'bob@example.com' },
+];
+
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  const id = Number(req.query.id);
+  const user = USERS.find((u) => u.id === id);
+
+  if (!user) {
+    return res.status(404).json({ error: 'User not found' });
+  }
+
+  switch (req.method) {
+    case 'GET':
+      return res.status(200).json(user);
+
+    case 'PATCH': {
+      const updated = { ...user, ...req.body, id }; // id is immutable
+      return res.status(200).json(updated);
+    }
+
+    case 'DELETE':
+      return res.status(204).end();
+
+    default:
+      res.setHeader('Allow', ['GET', 'PATCH', 'DELETE']);
+      return res.status(405).end(`Method ${req.method} Not Allowed`);
+  }
+}
+```
+
+A few things to notice:
+- The status code is explicit and meaningful on every path.
+- A `DELETE` returns `204 No Content` (no body needed after successful deletion).
+- Unknown methods get `405 Method Not Allowed` with an `Allow` header — this is what the spec requires.
+
+## Authentication Patterns
+
+Most production APIs gate endpoints behind authentication. Two common approaches:
+
+**Bearer token (JWT)** — the client sends `Authorization: Bearer <token>` on every request. The server verifies the token's signature without a database lookup. Stateless and scales well; token revocation requires a blocklist or short expiry.
+
+```ts
+const res = await fetch('/api/protected', {
+  headers: { Authorization: `Bearer ${token}` },
+});
+```
+
+**API key** — simpler, often used for server-to-server calls where you own both sides. Send it in a header (`X-API-Key`) rather than a query param so it stays out of server logs.
+
+Never put credentials in a URL query string — they end up in access logs, browser history, and referrer headers.
+
+## GraphQL: When REST Gets Chatty
+
+REST shines for simple CRUD resources. It starts to strain when:
+- A single UI view needs data from five different endpoints.
+- Mobile clients need smaller payloads than desktop.
+- Relationships between resources are deep and variable.
+
+GraphQL solves this with a single endpoint that accepts a typed query describing exactly the shape you need:
+
+```graphql
+query GetUserWithPosts($id: ID!) {
+  user(id: $id) {
+    name
+    email
+    posts(last: 3) {
+      title
+      publishedAt
+    }
+  }
+}
+```
+
+The server returns only what was asked for — no over-fetching, no under-fetching. The tradeoff: more complex server setup, a steeper learning curve, and caching is trickier (no plain HTTP cache for POST requests).
+
+## Other Styles Worth Knowing
+
+| Style | Format | When to consider |
+|-------|--------|-----------------|
+| **REST** | JSON over HTTP | Default choice for web/mobile APIs |
+| **GraphQL** | JSON over HTTP (POST) | Complex, nested data; multiple clients with different needs |
+| **gRPC** | Protocol Buffers over HTTP/2 | Internal microservices; high-throughput, low-latency |
+| **WebSockets** | Binary/text frames | Real-time features (chat, live dashboards, multiplayer) |
+| **SOAP** | XML over HTTP | Legacy enterprise integrations |
+
+## Practical Tips
+
+- **Version your API** — prefix routes with `/v1/` so you can evolve without breaking existing clients.
+- **Return consistent error shapes** — `{ error: string; code?: string }` everywhere, not a mix of formats.
+- **Validate inputs early** — reject bad data at the boundary with a 422, not a 500 deep inside your logic. A library like [Zod](/posts/zod-runtime-validation) makes this clean.
+- **Use HTTPS everywhere** — plain HTTP exposes credentials and request bodies to anyone on the network path.
+- **Paginate collections** — never return unbounded lists; use cursor or offset pagination with a `limit` param.
+
+APIs are the backbone of modern software. Whether you're consuming a third-party service or designing your own backend, understanding REST conventions and HTTP semantics will save you hours of debugging and keep your clients predictable.
