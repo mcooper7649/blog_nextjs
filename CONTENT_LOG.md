@@ -25,3 +25,4 @@
 | 2026-06-21 | refactor(post) | Expand thin "Bootstrap Framework" stub (34 lines, alpha install, typo) into full Bootstrap 5 React guide — grid, breakpoints table, utility classes, components, icons; fix broken inline image in react-helmet post (Flutter-main.png → react-helmet-main.png). |
 | 2026-09-14 | post | New post "Zod: Stop Trusting Your API Responses at Runtime" — runtime schema validation, type inference with z.infer, API response parsing, env var validation, and Zod + React Hook Form. |
 | 2026-09-22 | post | New TIL post "Object.groupBy() — JavaScript Finally Has a Native Group By" — ES2024 Object.groupBy and Map.groupBy, null-prototype result, React grouped-list example, and browser/Node support. |
+| 2026-09-24 | post | New TIL post "ES2023 Immutable Array Methods (toSorted, toReversed, toSpliced, with)" — four non-mutating array methods, React state examples, TypeScript compatibility, and browser/Node support. |
