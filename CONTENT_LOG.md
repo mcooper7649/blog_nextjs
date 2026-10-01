@@ -34,3 +34,4 @@
 | 2026-09-17 | post | New post "TIL: useDeferredValue — React's Built-in Way to Defer Expensive Renders" |
 | 2026-09-23 | post | New post "Kotlin Coroutines: Async Android Without Callback Hell" |
 | 2026-09-30 | post | New post "React Context + useReducer: Lightweight State Management Without Redux" |
+| 2026-10-01 | chore(seo) | Add canonical, Open Graph and Twitter tags to /posts and /contact |

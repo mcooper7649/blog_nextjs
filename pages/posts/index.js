@@ -15,6 +15,21 @@ function AllPostsPage(props) {
           key="description"
         />
         <link rel="canonical" href={`${SITE.url}/posts`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={`All posts | ${SITE.name}`} key="og-title" />
+        <meta
+          property="og:description"
+          content="Every Dojo Notes post on homelab, self-hosting, AI agents, React, Next.js and TypeScript."
+          key="og-description"
+        />
+        <meta property="og:url" content={`${SITE.url}/posts`} key="og-url" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`All posts | ${SITE.name}`} />
+        <meta
+          name="twitter:description"
+          content="Every Dojo Notes post on homelab, self-hosting, AI agents, React, Next.js and TypeScript."
+        />
+        <meta name="twitter:image" content={`${SITE.url}/images/site/og-default.png`} />
       </Head>
       <AllPosts posts={props.posts} />
     </>
