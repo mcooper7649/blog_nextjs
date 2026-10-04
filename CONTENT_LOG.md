@@ -25,3 +25,4 @@
 | 2026-06-21 | refactor(post) | Expand thin "Bootstrap Framework" stub (34 lines, alpha install, typo) into full Bootstrap 5 React guide — grid, breakpoints table, utility classes, components, icons; fix broken inline image in react-helmet post (Flutter-main.png → react-helmet-main.png). |
 | 2026-09-14 | post | New post "Zod: Stop Trusting Your API Responses at Runtime" — runtime schema validation, type inference with z.infer, API response parsing, env var validation, and Zod + React Hook Form. |
 | 2026-09-22 | post | New TIL post "Object.groupBy() — JavaScript Finally Has a Native Group By" — ES2024 Object.groupBy and Map.groupBy, null-prototype result, React grouped-list example, and browser/Node support. |
+| 2026-10-04 | chore(perf) | Compress 7 oversized post images (resize to max 1200px, strip metadata) — 7.2 MB total savings (Flutter-main.png 3.3→0.7 MB, nextjs-file-based-routing.png 2.4→0.24 MB, and 5 more). |
