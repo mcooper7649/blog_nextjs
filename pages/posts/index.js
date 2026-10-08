@@ -1,30 +1,30 @@
 import Head from 'next/head';
-import { Fragment } from 'react';
 
 import AllPosts from '../../components/posts/all-posts';
-import { getAllPosts } from '../../lib/posts-util';
+import { getAllPosts, toSummary } from '../../lib/posts-util';
+import { SITE } from '../../lib/site';
 
 function AllPostsPage(props) {
   return (
-    <Fragment>
+    <>
       <Head>
-        <title>All Posts</title>
+        <title key="title">{`All posts | ${SITE.name}`}</title>
         <meta
-          name='description'
-          content='A list of all programming-related tutorials and posts!'
+          name="description"
+          content="Every Dojo Notes post on homelab, self-hosting, AI agents, React, Next.js and TypeScript, searchable and filterable by belt level."
+          key="description"
         />
+        <link rel="canonical" href={`${SITE.url}/posts`} />
       </Head>
       <AllPosts posts={props.posts} />
-    </Fragment>
+    </>
   );
 }
 
 export function getStaticProps() {
-  const allPosts = getAllPosts();
-
   return {
     props: {
-      posts: allPosts,
+      posts: getAllPosts().map(toSummary),
     },
   };
 }

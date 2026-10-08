@@ -87,8 +87,15 @@ function ContactForm() {
   }
 
   return (
-    <section className={classes.contact}>
-      <h1>How can I help you?</h1>
+    <section className={`page ${classes.contact}`}>
+      <div className={classes.intro}>
+        <p className="eyebrow">Contact</p>
+        <h1>Knock on the dojo door.</h1>
+        <p>
+          Questions about a post, a homelab rabbit hole, or a role you think I'd fit? Send a
+          note and I'll get back to you.
+        </p>
+      </div>
       <form className={classes.form} onSubmit={sendMessageHandler}>
         <div className={classes.controls}>
           <div className={classes.control}>
@@ -124,7 +131,9 @@ function ContactForm() {
         </div>
 
         <div className={classes.actions}>
-          <button>Send Message</button>
+          <button className="btn" disabled={requestStatus === 'pending'}>
+            {requestStatus === 'pending' ? 'Sending…' : 'Send message'}
+          </button>
         </div>
       </form>
       {notification && (

@@ -1,4 +1,4 @@
-# MyCodeDojo Blog
+# Dojo Notes: the MyCodeDojo blog
 
 A personal technical blog built with **Next.js 14**, live at **[blog.mycodedojo.com](https://blog.mycodedojo.com)**.
 
@@ -12,10 +12,44 @@ Topics covered: React, Next.js, JavaScript/TypeScript, Kotlin/Android, PostgreSQ
 | Styling | CSS Modules |
 | Post parsing | gray-matter + react-markdown |
 | Syntax highlighting | react-syntax-highlighter |
-| Icons | Font Awesome (react-fontawesome) |
+| Fonts | Shippori Mincho / Inter / JetBrains Mono via `next/font` |
 | Contact storage | MongoDB |
 | Deployment | Vercel (auto-deploys from `main`) |
 | SEO | Dynamic sitemap at `/sitemap.xml`, `robots.txt`, per-post OpenGraph + Twitter Card meta |
+
+## Brand guide
+
+The blog is branded **Dojo Notes** (道場), tagline *"Field notes from the code dojo."* The look is ink and washi paper with a single vermilion accent.
+
+| Token (`styles/globals.css`) | Light | Dark | Use |
+|---|---|---|---|
+| `--paper` | `#f5f0e6` | `#141210` | page background |
+| `--ink` | `#1b1813` | `#eee7d8` | text, headings |
+| `--accent` | `#b3122c` | `#e0384f` | links, highlights, the seal |
+| `--gold` | `#9a7b2f` | `#c9a95a` | rare secondary accent |
+
+- **Type:** Shippori Mincho for headings, Inter for body, JetBrains Mono for code and meta. All are loaded with `next/font` in `pages/_app.js`.
+- **Mark:** a red hanko seal with an enso (`components/layout/logo.js`, `public/icon.svg`).
+- **Dark mode** follows `prefers-color-scheme`. Every color is a token, so don't hard-code hex values in components.
+
+### Post frontmatter
+
+```yaml
+---
+title: 'Docker Multi-Stage Builds'
+date: '2026-06-12'          # YYYY-MM-DD
+image: cover.jpg            # file in public/images/posts/<slug>/
+excerpt: One or two sentences shown on cards and in meta tags.
+isFeatured: false           # newest featured post is the home-page spotlight
+belt: brown                 # white | yellow | green | brown | black
+---
+```
+
+`belt` is the difficulty level, shown as a belt chip on cards and post headers: **white** = beginner/intro, **yellow** = novice, **green** = intermediate how-to, **brown** = advanced, **black** = expert deep dive. It's optional, but every new post should set it.
+
+### Latest-posts API
+
+`GET /api/latest-posts?limit=3` (max 10) returns the newest posts as JSON with CORS open. The portfolio at www.mycodedojo.com uses it for its "From the Dojo" section. The RSS feed at `/feed.xml` is also CORS-enabled.
 
 ## Local Development
 

@@ -1,54 +1,61 @@
-import { Fragment } from "react";
-import Head from "next/head";
+import Head from 'next/head';
 
-import FeaturedPosts from "../components/home-page/featured-posts";
-import { getFeaturedPosts } from "../lib/posts-util";
+import Hero from '../components/home-page/hero';
+import Spotlight from '../components/home-page/spotlight';
+import LatestPosts from '../components/home-page/featured-posts';
+import { getAllPosts, toSummary } from '../lib/posts-util';
+import { SITE } from '../lib/site';
 
-function HomePage(props) {
+const TITLE = `${SITE.name}: homelab, self-hosting & full-stack craft`;
+
+function HomePage({ spotlight, latest, postCount }) {
   return (
-    <Fragment>
+    <>
       <Head>
-        <title>Mike's Dev Blog — React, Next.js, TypeScript & Homelab</title>
-        <meta
-          name="description"
-          content="Practical tutorials on React, Next.js, TypeScript, Kotlin, Docker, and self-hosting — written by Michael Cooper."
-        />
+        <title key="title">{TITLE}</title>
+        <meta name="description" content={SITE.description} key="description" />
+        <link rel="canonical" href={`${SITE.url}/`} />
         <meta property="og:type" content="website" />
-        <link rel="canonical" href="https://blog.mycodedojo.com/" />
+        <meta property="og:title" content={TITLE} key="og-title" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Mike's Dev Blog — React, Next.js, TypeScript & Homelab" />
-        <meta name="twitter:description" content="Practical tutorials on React, Next.js, TypeScript, Kotlin, Docker, and self-hosting — written by Michael Cooper." />
-        <meta name="twitter:image" content="https://blog.mycodedojo.com/images/site/logo.png" />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={SITE.description} />
+        <meta name="twitter:image" content={`${SITE.url}/images/site/og-default.png`} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'WebSite',
-              name: "Mike's Dev Blog",
-              url: 'https://blog.mycodedojo.com',
-              description:
-                'Practical tutorials on React, Next.js, TypeScript, Kotlin, Docker, and self-hosting — written by Michael Cooper.',
+              '@type': 'Blog',
+              name: SITE.name,
+              url: SITE.url,
+              description: SITE.description,
               author: {
                 '@type': 'Person',
-                name: 'Michael Cooper',
-                url: 'https://www.mycodedojo.com',
+                name: SITE.author,
+                url: SITE.portfolio,
               },
             }),
           }}
         />
       </Head>
-      <FeaturedPosts posts={props.posts} />
-    </Fragment>
+      <Hero postCount={postCount} />
+      <Spotlight post={spotlight} />
+      <LatestPosts posts={latest} />
+    </>
   );
 }
 
 export function getStaticProps() {
-  const featuredPosts = getFeaturedPosts();
+  const allPosts = getAllPosts().map(toSummary);
+  const spotlight = allPosts.find((post) => post.isFeatured) || allPosts[0] || null;
+  const latest = allPosts.filter((post) => post !== spotlight).slice(0, 6);
 
   return {
     props: {
-      posts: featuredPosts,
+      spotlight,
+      latest,
+      postCount: allPosts.length,
     },
   };
 }

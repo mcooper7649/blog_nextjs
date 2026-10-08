@@ -1,17 +1,21 @@
-import { Fragment } from 'react';
 import Head from 'next/head';
 
 import ContactForm from '../components/contact/contact-form';
+import { SITE } from '../lib/site';
 
 function ContactPage() {
   return (
-    <Fragment>
+    <>
       <Head>
-        <title>Contact Me</title>
-        <meta name='description' content='Send me your messages!' />
+        <title key="title">{`Contact | ${SITE.name}`}</title>
+        <meta
+          name="description"
+          content="Get in touch with Michael Cooper about a post, a project or a role."
+          key="description"
+        />
       </Head>
       <ContactForm />
-    </Fragment>
+    </>
   );
 }
 

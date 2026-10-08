@@ -1,43 +1,42 @@
-import Link from "next/link";
-import Image from "next/image";
+import Link from 'next/link';
+import Image from 'next/image';
 
-import classes from "./post-item.module.css";
+import BeltChip from '../ui/belt-chip';
+import { formatDate } from './format';
+import classes from './post-item.module.css';
 
 function PostItem(props) {
-  const { title, image, excerpt, date, slug, readingTime } = props.post;
+  const { title, image, excerpt, date, slug, readingTime, belt } = props.post;
 
-  const formattedDate = new Date(date).toLocaleDateString("en-US", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-
-  const imagePath = `/images/posts/${slug}/${image}`;
-  const linkPath = `/posts/${slug}`;
+  const imagePath = image ? `/images/posts/${slug}/${image}` : null;
 
   return (
     <li className={classes.post}>
-      <Link href={linkPath}>
-        <a>
-          <div className={classes.image}>
+      <Link href={`/posts/${slug}`} className={classes.link}>
+        <div className={classes.image}>
+          {imagePath ? (
             <Image
               src={imagePath}
-              alt={title}
-              width={300}
-              height={200}
-              layout="responsive"
+              alt=""
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 360px"
             />
+          ) : (
+            <span className={classes.placeholder} aria-hidden="true">
+              道
+            </span>
+          )}
+        </div>
+        <div className={classes.content}>
+          <div className={classes.meta}>
+            <time dateTime={date}>{formatDate(date)}</time>
+            <span aria-hidden="true">·</span>
+            <span>{readingTime} min</span>
           </div>
-          <div className={classes.content}>
-            <h3>{title}</h3>
-            <div className={classes.meta}>
-              <time>{formattedDate}</time>
-              <span aria-hidden="true">·</span>
-              <span>{readingTime} min read</span>
-            </div>
-            <p>{excerpt}</p>
-          </div>
-        </a>
+          <h3>{title}</h3>
+          <p>{excerpt}</p>
+          <BeltChip belt={belt} />
+        </div>
       </Link>
     </li>
   );

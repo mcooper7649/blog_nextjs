@@ -1,56 +1,75 @@
-
 .header {
-  padding-bottom: var(--size-8);
-  border-bottom: 8px solid var(--color-primary-100);
-  margin: var(--size-4) 0;
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
+  padding-top: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 2.5rem;
 }
 
-.titleGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: center;
+.back {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.back:hover {
+  color: var(--accent);
 }
 
 .header h1 {
-  font-size: var(--size-8);
-  color: var(--color-primary-500);
   margin: 0;
-  line-height: initial;
-  text-align: center;
+  font-size: clamp(2.1rem, 5.5vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.excerpt {
+  margin: 1rem 0 0;
+  color: var(--ink-soft);
+  font-size: 1.2rem;
+  line-height: 1.55;
 }
 
 .meta {
-  font-style: italic;
-  color: var(--color-grey-300);
-  font-size: 0.9rem;
-  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.6rem;
+  margin-top: 1.5rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.88rem;
+  color: var(--ink-faint);
 }
 
-.header img {
+.author {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.cover {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  margin: 2rem calc(-1 * min(var(--gutter), 3rem)) 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+}
+
+.cover img {
   object-fit: cover;
-  width: 200px;
-  height: 120px;
 }
 
-@media (min-width: 768px) {
-  .header {
-    margin: var(--size-8) 0;
-    flex-direction: row;
-    align-items: flex-end;
-  }
-
-  .titleGroup {
-    align-items: flex-start;
-  }
-
-  .header h1 {
-    font-size: var(--size-16);
-    text-align: left;
+@media (max-width: 560px) {
+  .cover {
+    margin-left: calc(-1 * var(--gutter));
+    margin-right: calc(-1 * var(--gutter));
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
   }
 }

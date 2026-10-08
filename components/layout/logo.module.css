@@ -1,13 +1,18 @@
 .logo {
-  text-transform: uppercase;
-  font-size: var(--size-5);
-  font-weight: bold;
-  font-family: 'Oswald', sans-serif;
-  color: var(--color-primary-400);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
 }
 
-@media (min-width: 768px) {
-  .logo {
-    font-size: var(--size-8);
-  }
+.wordmark {
+  font-family: var(--font-display), serif;
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.wordmark em {
+  font-style: normal;
+  color: var(--accent);
 }
