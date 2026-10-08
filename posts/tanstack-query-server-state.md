@@ -4,6 +4,7 @@ date: '2026-06-10'
 image: cover.jpg
 excerpt: If you are still fetching data with useEffect and useState, TanStack Query will feel like a superpower — caching, deduplication, background refetching, and mutations, all handled for you.
 isFeatured: false
+belt: green
 ---
 
 I was deep into my third project when I realized I was copy-pasting the same pattern every time:

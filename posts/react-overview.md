@@ -4,6 +4,7 @@ excerpt: A JavaScript library for building user interfaces
 image: react-main.png
 isFeatured: true
 date: '2022-06-07'
+belt: white
 ---
 
 ### What is React?

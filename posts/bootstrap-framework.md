@@ -4,6 +4,7 @@ excerpt: Bootstrap is the most popular CSS Framework for developing responsive a
 image: bootstrap-main.png
 isFeatured: true
 date: '2022-06-07'
+belt: white
 ---
 
 Bootstrap is the most popular CSS framework for building responsive, mobile-first websites. It gives you a battle-tested grid system, a library of ready-made components, and a huge set of utility classes so you spend less time writing repetitive CSS.

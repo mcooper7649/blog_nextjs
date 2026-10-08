@@ -4,6 +4,7 @@ date: '2026-06-08'
 image: cover.jpg
 excerpt: How I run Home Assistant in a single Docker container, keep the config in Git, and build automations that actually make life easier.
 isFeatured: false
+belt: green
 ---
 
 Home Assistant is the kind of project that sounds like a weekend toy until you've lived with it for a month. Now it controls my lights, monitors my NAS disk temps, sends me alerts when a door is left open, and does a dozen other things I've completely stopped thinking about. The best part: it runs on a $35 Raspberry Pi (or a VM, or a plain Docker container), and every bit of the config is plain YAML I keep in version control.

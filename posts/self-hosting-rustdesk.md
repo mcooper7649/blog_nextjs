@@ -4,6 +4,7 @@ date: '2026-06-05'
 image: cover.jpg
 excerpt: Replace TeamViewer and AnyDesk with your own RustDesk relay server — complete Docker Compose setup, firewall rules, and client configuration.
 isFeatured: false
+belt: green
 ---
 
 RustDesk is an open-source remote desktop application written in Rust. Out of the box it connects through RustDesk's public relay infrastructure — fine for getting started, but that means your screen data passes through someone else's servers. Self-hosting changes that: all traffic relays through hardware you control, nothing leaves your network without your permission, and you can drop the paid subscription entirely.

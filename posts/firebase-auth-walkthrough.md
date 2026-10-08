@@ -4,6 +4,7 @@ excerpt: Steps Used to add Firebase to Crypto Tracking Application
 image: firebaseAuth-main.png
 isFeatured: true
 date: '2022-06-16'
+belt: yellow
 ---
 
 ## Useful Links

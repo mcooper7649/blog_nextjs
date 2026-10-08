@@ -4,6 +4,7 @@ date: '2026-06-06'
 image: postgres-main.jpeg
 excerpt: PostgreSQL is the most capable open-source relational database you can run yourself. Here is how to model data, write efficient queries, and use it cleanly from Node.js.
 isFeatured: true
+belt: green
 ---
 
 PostgreSQL is the go-to relational database for serious projects. It is ACID-compliant, supports JSON alongside traditional relational data, has one of the richest SQL feature sets of any open-source database, and the community has maintained it reliably for over 25 years. If you are reaching for a database in a Node.js project, Postgres is rarely the wrong choice.

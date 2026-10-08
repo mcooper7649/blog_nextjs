@@ -4,6 +4,7 @@ excerpt: Flutter lets you create mobile apps that are pixel perfect for any devi
 image: flutter-main1.jpeg
 isFeatured: true
 date: '2022-05-05'
+belt: white
 ---
 
 ## Flutter

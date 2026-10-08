@@ -4,6 +4,7 @@ date: '2022-06-06'
 image: api-main.png
 excerpt: API stands for application programming interface, a concept that applies everywhere from command-line tools to enterprise Java code to Ruby on Rails web apps. An API is a way to programmatically interact with a separate software component or resource.
 isFeatured: true
+belt: white
 ---
 
 ## What is an API? 

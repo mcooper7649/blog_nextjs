@@ -4,6 +4,7 @@ date: '2026-06-01'
 image: cover.jpg
 excerpt: TypeScript stops being noise and starts being useful the moment you learn a handful of patterns — typed props, useState generics, event handlers, and API responses.
 isFeatured: false
+belt: green
 ---
 
 I avoided TypeScript in my React projects longer than I should have. The error messages looked cryptic, the setup seemed heavy, and I already had PropTypes. Then a junior dev introduced a subtle prop-shape bug that took three hours to track down — a bug TypeScript would have caught at save time. I've typed my React ever since.

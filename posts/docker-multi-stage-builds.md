@@ -4,6 +4,7 @@ date: '2026-06-12'
 image: cover.jpg
 excerpt: Multi-stage builds let you compile and test inside a fat builder image, then ship only the final artifact in a tiny runtime image — the same Dockerfile, no extra scripts.
 isFeatured: false
+belt: brown
 ---
 
 When I first containerized a Node.js app, the image came out at 1.4 GB. It worked, but deploying it meant pushing a gigabyte of bits every time I changed a line of code. The culprit was simple: I was building inside `node:20` and shipping the same fat image — dev dependencies, build toolchain, cached npm packages, and all.

@@ -4,6 +4,7 @@ date: '2026-05-31'
 image: cover.jpg
 excerpt: How I run my entire homelab from a single, version-controlled Docker Compose file — with healthchecks, named volumes, and backups that I never have to think about.
 isFeatured: true
+belt: brown
 ---
 
 Everything in my homelab runs in Docker, and the whole thing is described by a handful of `docker-compose.yml` files I keep in a private Git repo. That one decision — treating my infrastructure as code instead of a pile of hand-installed packages — is the single biggest reason the lab has stayed reliable. When a disk dies or I rebuild a host, I'm back online in minutes because the *definition* of the stack lives in version control, not in my head.

@@ -4,6 +4,7 @@ date: '2026-06-03'
 image: nextjs-app-router.png
 excerpt: The App Router rewrites how Next.js handles routing, layouts, and data fetching. Here is a practical breakdown of what changed and how to use it today.
 isFeatured: false
+belt: green
 ---
 
 The Next.js Pages Router has served the community well since the beginning — file-based routing, `getServerSideProps`, `getStaticProps`, and a simple `pages/api/` folder for backend logic. But since Next.js 13, the framework has been moving toward a new paradigm: the **App Router**.

@@ -4,6 +4,7 @@ excerpt: This package is a React component that can be given a string of markdow
 image: react-markdown.png
 isFeatured: false
 date: '2020-04-24'
+belt: white
 ---
 
 # React Markdown

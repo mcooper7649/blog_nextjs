@@ -4,6 +4,7 @@ date: '2026-09-22'
 image: cover.jpg
 excerpt: ES2024 ships Object.groupBy() and Map.groupBy() — no more reduce() gymnastics just to bucket an array into groups.
 isFeatured: false
+belt: yellow
 ---
 
 **TIL** that JavaScript (ES2024) shipped `Object.groupBy()` — something I'd been reaching for lodash or a manual `reduce()` to do for years. It's now in Node.js 21+ and all modern browsers, and it's cleaner than anything I'd been writing by hand.

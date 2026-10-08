@@ -4,6 +4,7 @@ excerpt: Material-UI, a popular React UI framework and using the makeStyle optio
 image: mui-main1.png
 isFeatured: true
 date: '2022-06-10'
+belt: yellow
 ---
 
 ## What is Material-UI?

@@ -4,6 +4,7 @@ date: '2026-06-12'
 image: cover.jpg
 excerpt: Most React devs either ignore these hooks or wrap everything in them "just to be safe." Both are wrong. Here is exactly when each one earns its place.
 isFeatured: false
+belt: brown
 ---
 
 I've seen both extremes in code reviews: developers who never touch `useCallback` or `useMemo`, and developers who wrap every single value and function in them "for performance." Both approaches hurt. The hooks exist to solve two specific problems, and using them outside those problems just adds noise and — yes — a small runtime cost.

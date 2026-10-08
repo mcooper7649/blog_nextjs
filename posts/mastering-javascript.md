@@ -4,6 +4,7 @@ date: '2026-06-07'
 image: mastering-js-thumb.png
 excerpt: A practical tour of the modern JS features that come up every day — scoping, destructuring, array methods, async/await, and optional chaining.
 isFeatured: false
+belt: yellow
 ---
 
 JavaScript powers the web, but there's a big gap between knowing the basics and writing fluent modern JS. This post covers the patterns I reach for most often — all of them standard ES2015+ features available in every current browser and Node version.

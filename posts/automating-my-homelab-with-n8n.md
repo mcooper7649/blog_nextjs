@@ -4,6 +4,7 @@ date: '2026-05-31'
 image: cover.jpg
 excerpt: I replaced a pile of brittle cron scripts with n8n — a self-hosted automation tool where workflows are visual, debuggable, and triggered by real webhooks.
 isFeatured: false
+belt: green
 ---
 
 For years the glue holding my homelab together was a folder of shell scripts and cron jobs. They worked until they didn't, and when one failed silently at 3am I usually found out days later. [n8n](https://n8n.io) replaced almost all of it. It's a self-hosted workflow automation tool where each automation is a graph of nodes you can see, run step by step, and inspect — and because I host it myself, my data never leaves the lab.

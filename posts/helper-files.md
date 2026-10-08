@@ -4,6 +4,7 @@ excerpt: Helper Files keep your code clean and re-usable
 image: helper-main.png
 isFeatured: true
 date: '2022-06-12'
+belt: white
 ---
 
 ## What is Helper file?

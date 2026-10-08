@@ -4,6 +4,7 @@ date: '2026-09-14'
 image: cover.jpg
 excerpt: TypeScript types vanish at runtime. Zod gives you a single source of truth for shape validation *and* your TS types — here is how I use it in real projects.
 isFeatured: true
+belt: green
 ---
 
 TypeScript is great right up until the moment your app actually runs. Types are erased by the compiler, so when a REST endpoint returns an unexpected shape or an environment variable is missing, TypeScript can't save you — a runtime crash or silent bug will. That's the gap Zod fills.

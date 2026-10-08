@@ -4,6 +4,7 @@ excerpt: React Helmet Async lets you quickly add Meta and other Head Tags to you
 image: react-helmet-main.png
 isFeatured: true
 date: '2022-06-06'
+belt: white
 ---
 
 ## What is React Helmet Async?
