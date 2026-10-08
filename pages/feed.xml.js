@@ -41,9 +41,9 @@ export async function getServerSideProps({ res }) {
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Mike's Dev Blog</title>
+    <title>Dojo Notes by Michael Cooper</title>
     <link>${BASE_URL}</link>
-    <description>Practical posts on React, Next.js, TypeScript, Docker, homelab, and modern web development.</description>
+    <description>Field notes from the code dojo: homelab, self-hosting, AI agents and full-stack craft.</description>
     <language>en-us</language>
     <lastBuildDate>${lastBuildDate}</lastBuildDate>
     <atom:link href="${BASE_URL}/feed.xml" rel="self" type="application/rss+xml" />
@@ -53,6 +53,7 @@ ${items}
 
   res.setHeader('Content-Type', 'application/rss+xml; charset=utf-8');
   res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate');
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.write(rss);
   res.end();
 
