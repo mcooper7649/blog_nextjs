@@ -36,3 +36,4 @@
 | 2026-09-30 | post | New post "React Context + useReducer: Lightweight State Management Without Redux" |
 | 2026-10-01 | chore(seo) | Add canonical, Open Graph and Twitter tags to /posts and /contact |
 | 2026-10-10 | refactor(post) | Expand "Flutter Introduction" |
+| 2026-10-12 | post | New post "Prisma ORM: Type-Safe Database Queries for Node.js" |
