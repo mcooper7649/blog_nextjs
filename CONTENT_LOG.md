@@ -39,3 +39,4 @@
 | 2026-10-12 | post | New post "Prisma ORM: Type-Safe Database Queries for Node.js" |
 | 2026-10-14 | post | New post "Testing React with Vitest and React Testing Library" |
 | 2026-10-15 | post | New post "TIL: TypeScript's satisfies Operator" |
+| 2026-10-16 | post | New post "Zustand: Simple Global State Without the Boilerplate" |
