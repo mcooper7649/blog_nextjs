@@ -40,3 +40,4 @@
 | 2026-10-14 | post | New post "Testing React with Vitest and React Testing Library" |
 | 2026-10-15 | post | New post "TIL: TypeScript's satisfies Operator" |
 | 2026-10-16 | post | New post "Zustand: Simple Global State Without the Boilerplate" |
+| 2026-10-18 | refactor(post) | Expand "Webpack 5 and Module Bundling: A Practical Guide" |
