@@ -42,3 +42,4 @@
 | 2026-10-16 | post | New post "Zustand: Simple Global State Without the Boilerplate" |
 | 2026-10-18 | refactor(post) | Expand "Webpack 5 and Module Bundling: A Practical Guide" |
 | 2026-10-19 | post | New post "Next.js Server Actions: Forms Without the API Boilerplate" |
+| 2026-10-21 | post | New post "Building a Type-Safe REST API with Express and TypeScript" |
