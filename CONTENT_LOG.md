@@ -43,3 +43,4 @@
 | 2026-10-18 | refactor(post) | Expand "Webpack 5 and Module Bundling: A Practical Guide" |
 | 2026-10-19 | post | New post "Next.js Server Actions: Forms Without the API Boilerplate" |
 | 2026-10-21 | post | New post "Building a Type-Safe REST API with Express and TypeScript" |
+| 2026-10-22 | post | New post "TIL: Promise.withResolvers() — A Cleaner Deferred Pattern" |
