@@ -45,3 +45,4 @@
 | 2026-10-21 | post | New post "Building a Type-Safe REST API with Express and TypeScript" |
 | 2026-10-22 | post | New post "TIL: Promise.withResolvers() — A Cleaner Deferred Pattern" |
 | 2026-10-23 | post | New post "React 19: The New APIs Worth Using Right Now" |
+| 2026-10-24 | refactor(post) | Expand "SEO in React: Dynamic Meta Tags with react-helmet-async" |
