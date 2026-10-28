@@ -48,3 +48,4 @@
 | 2026-10-24 | refactor(post) | Expand "SEO in React: Dynamic Meta Tags with react-helmet-async" |
 | 2026-10-26 | post | New post "useReducer: Managing Complex State in React" |
 | 2026-10-27 | post | New post "TIL: structuredClone() — JavaScript Has a Native Deep Clone" |
+| 2026-10-28 | post | New post "GitHub Actions CI/CD for Your Next.js App" |
