@@ -49,3 +49,4 @@
 | 2026-10-26 | post | New post "useReducer: Managing Complex State in React" |
 | 2026-10-27 | post | New post "TIL: structuredClone() — JavaScript Has a Native Deep Clone" |
 | 2026-10-28 | post | New post "GitHub Actions CI/CD for Your Next.js App" |
+| 2026-10-29 | post | New post "TIL: toSorted(), toReversed(), toSpliced(), with() — Mutate-Free Array Methods" |
