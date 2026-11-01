@@ -51,3 +51,4 @@
 | 2026-10-28 | post | New post "GitHub Actions CI/CD for Your Next.js App" |
 | 2026-10-29 | post | New post "TIL: toSorted(), toReversed(), toSpliced(), with() — Mutate-Free Array Methods" |
 | 2026-10-30 | post | New post "Core Web Vitals in Next.js: Measuring and Fixing What Actually Matters" |
+| 2026-11-01 | refactor(post) | Expand "REST APIs: A Practical Guide for Web Developers" |
