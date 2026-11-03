@@ -53,3 +53,4 @@
 | 2026-10-30 | post | New post "Core Web Vitals in Next.js: Measuring and Fixing What Actually Matters" |
 | 2026-11-01 | refactor(post) | Expand "REST APIs: A Practical Guide for Web Developers" |
 | 2026-11-02 | post | New post "TypeScript Utility Types: The Ones You Will Actually Use" |
+| 2026-11-03 | feat(ux) | Add an on-brand custom 404 page |
