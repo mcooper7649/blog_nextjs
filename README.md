@@ -116,7 +116,15 @@ isFeatured: false
 Post body in Markdown…
 ```
 
-3. Put the cover image in `public/images/posts/<slug>/cover-image.png`. Reference it in the frontmatter by filename only.
+3. Put the cover image in `public/images/posts/<slug>/cover-image.png`. Reference it in the frontmatter by filename only. To have one generated instead, copy `public/images/site/cover-placeholder.jpg` there as `cover.jpg` and add these frontmatter fields:
+
+   ```yaml
+   image: cover.jpg
+   coverPending: true
+   coverPrompt: 'one sentence describing the picture, with no text in it'
+   ```
+
+   A cron job on the home network (`scripts/cover_job.py`) picks these up, renders a cover on a local ComfyUI GPU, removes the two fields, and pushes to `main`. It also replaces any cover that is the placeholder or a byte-for-byte copy of an older post's cover.
 
 4. Set `isFeatured: true` to show the post in the hero section on the home page (keep featured posts to ≤ 3–4).
 

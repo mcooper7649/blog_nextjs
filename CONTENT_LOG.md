@@ -56,3 +56,4 @@
 | 2026-11-03 | feat(ux) | Add an on-brand custom 404 page |
 | 2026-11-04 | post | New post "Custom React Hooks: Extract, Reuse, and Actually Test Them" |
 | 2026-11-04 | fix(images) | Replace covers on three older posts that shared an image with another post |
+| 2026-11-04 | feat(covers) | Generate covers on local ComfyUI GPUs via scripts/cover_job.py; remove the OpenAI script |
