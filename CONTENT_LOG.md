@@ -57,3 +57,4 @@
 | 2026-11-04 | post | New post "Custom React Hooks: Extract, Reuse, and Actually Test Them" |
 | 2026-11-04 | fix(images) | Replace covers on three older posts that shared an image with another post |
 | 2026-11-04 | feat(covers) | Generate covers on local ComfyUI GPUs via scripts/cover_job.py; remove the OpenAI script |
+| 2026-11-05 | post | New TIL post "findLast() and findLastIndex() — Search Arrays From the End" — ES2023 reverse-search array methods, type-guard overload, support table |
