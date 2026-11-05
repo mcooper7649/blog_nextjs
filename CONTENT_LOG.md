@@ -55,3 +55,4 @@
 | 2026-11-02 | post | New post "TypeScript Utility Types: The Ones You Will Actually Use" |
 | 2026-11-03 | feat(ux) | Add an on-brand custom 404 page |
 | 2026-11-04 | post | New post "Custom React Hooks: Extract, Reuse, and Actually Test Them" |
+| 2026-11-04 | fix(images) | Replace covers on three older posts that shared an image with another post |

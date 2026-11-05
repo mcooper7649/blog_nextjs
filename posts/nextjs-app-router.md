@@ -1,7 +1,7 @@
 ---
 title: 'Next.js App Router: What Changed and Why It Matters'
 date: '2026-06-03'
-image: nextjs-app-router.png
+image: cover.jpg
 excerpt: The App Router rewrites how Next.js handles routing, layouts, and data fetching. Here is a practical breakdown of what changed and how to use it today.
 isFeatured: false
 belt: green
