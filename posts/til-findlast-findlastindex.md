@@ -5,8 +5,6 @@ image: cover.jpg
 excerpt: ES2023 added findLast() and findLastIndex() so you can stop reversing arrays just to find the last matching element.
 isFeatured: false
 belt: white
-coverPending: true
-coverPrompt: 'A magnifying glass hovering over the right end of a long wooden shelf lined with colourful books, the spine of one book painted vermilion'
 ---
 
 **TIL** that ES2023 added `Array.prototype.findLast()` and `Array.prototype.findLastIndex()` — the reverse-direction counterparts to `find()` and `findIndex()`. No more cloning and reversing an array just to grab the last match.
