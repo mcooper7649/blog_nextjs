@@ -5,8 +5,6 @@ image: cover.jpg
 excerpt: Replace scattered isLoading and error checks with Suspense and Error Boundaries — a cleaner model for async UI in React.
 isFeatured: false
 belt: green
-coverPending: true
-coverPrompt: 'A tightrope walker balancing above a canyon, the rope painted vermilion, with safety nets suspended below on both sides.'
 ---
 
 Handling loading and error states in React usually means peppering every component with `if (isLoading) return <Spinner />` and `if (error) return <p>{error.message}</p>`. It works, but it scatters UI concerns through your data-fetching logic. React Suspense and Error Boundaries offer a different model: declare fallbacks once at the boundary, and let child components stay focused on the happy path.
