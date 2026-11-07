@@ -59,3 +59,4 @@
 | 2026-11-04 | feat(covers) | Generate covers on local ComfyUI GPUs via scripts/cover_job.py; remove the OpenAI script |
 | 2026-11-05 | post | New TIL post "findLast() and findLastIndex() — Search Arrays From the End" — ES2023 reverse-search array methods, type-guard overload, support table |
 | 2026-11-06 | post | New post "React Suspense and Error Boundaries: Declarative Loading and Error States" — React.lazy + Suspense for code splitting, useSuspenseQuery from TanStack Query, class-based ErrorBoundary, react-error-boundary package, granular boundary placement. |
+| 2026-11-07 | refactor(post) | Expand "Helper Files and Utility Functions in React" stub — TypeScript helpers, API/DB util patterns, file organization, MDN link; fix broken MUI v4 link in firebase-auth post |

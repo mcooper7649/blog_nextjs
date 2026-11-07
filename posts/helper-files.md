@@ -1,285 +1,217 @@
 ---
-title: Helper Files or Utils
-excerpt: Helper Files keep your code clean and re-usable
+title: 'Helper Files and Utility Functions in React'
+excerpt: Keep components clean and logic reusable by extracting it into focused utility modules.
 image: helper-main.png
 isFeatured: true
 date: '2022-06-12'
 belt: white
 ---
 
-## What is Helper file?
+Well-organized React projects almost always have a `helpers/` or `utils/` folder. These files hold the logic that doesn't belong inside a component: data transformations, API calls, validation rules, database access. Keeping that logic in separate modules makes it easier to test, reuse, and change without touching your UI.
 
-One of the well known conventions of React components is that any logic should be broken out of the render function into a helper function. This keeps the component clean, and separates the concerns inside of the component.
+## Why break logic out of components
 
-![Helper Files](helper-main.png)
+A component's job is to render UI and respond to user events. When you mix data fetching, string formatting, and business rules into the same file, every change becomes risky — you might accidentally break rendering while fixing a data bug, or vice versa.
 
-## Documentation.
+Utility files solve this by giving non-UI logic its own home. The benefits stack up quickly:
 
-- Referenced Documentation [here](https://www.jsmount.com/how-to-create-a-common-helper-class-or-util-file-in-react-js/)
+- **Testability** — a pure function is trivial to unit-test; a function tangled with JSX is not.
+- **Reuse** — two components can import the same helper instead of duplicating code.
+- **Readability** — the component shows *what* happens, the helper shows *how*.
 
-## Usage
+## Basic utility module
 
-This file contains all utility exposed functions and directly available into other classes and components.
-Here we need to expose every function which we want to use outside while in the Helper Class file we don’t expose methods directly, we expose only class.
-
-We can create multiple util files as well as per our code structure.
-
-### Basic Util
+Start with a plain ES module that exports named functions. Keep each function focused on one task.
 
 ```js
-export function addTwoNumber(number1, number2) {
-  return number1 + number2;
+// utils/math-util.js
+export function addTwoNumbers(a, b) {
+  return a + b;
 }
-export function getUserName() {
-  return 'JS Mount';
+
+export function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), max);
 }
-export function getNameArray() {
-  const data = [];
-  for (let i = 0; i < 50; i++) {
-    data.push('JS-' + i);
-  }
-  return data;
+
+export function formatCurrency(amount, locale = 'en-US', currency = 'USD') {
+  return new Intl.NumberFormat(locale, { style: 'currency', currency }).format(amount);
 }
 ```
-
-### Usage of Basic Util
 
 ```jsx
-import React from 'react';
-import { addTwoNumber, getUserName, getNameArray } from './../../util/util';
-const ComponentA = (props) => {
-  return (
-    <>
-      <h3>Welcome to Router Component A</h3>
-      <h6>Called util function: Username is {getUserName()}</h6>
-      <h6>Sum of two number (3,4) using util.js - {addTwoNumber(3, 4)}</h6>
-      Total Names: {getNameArray().length}
-      <ul>
-        {getNameArray().map((name) => {
-          return <li>{name}</li>;
-        })}
-      </ul>
-    </>
+// SomePriceDisplay.jsx
+import { formatCurrency } from '../utils/math-util';
+
+function PriceTag({ amount }) {
+  return <span>{formatCurrency(amount)}</span>;
+}
+```
+
+## TypeScript helper files
+
+Adding types makes helpers self-documenting and catches misuse at compile time.
+
+```ts
+// utils/string-util.ts
+export function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+export function truncate(text: string, maxLength: number): string {
+  if (text.length <= maxLength) return text;
+  return text.slice(0, maxLength).trimEnd() + '…';
+}
+
+export function capitalize(text: string): string {
+  if (!text) return text;
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+```
+
+```ts
+// utils/array-util.ts
+export function groupBy<T>(
+  items: T[],
+  key: keyof T
+): Record<string, T[]> {
+  return items.reduce<Record<string, T[]>>((acc, item) => {
+    const group = String(item[key]);
+    acc[group] = acc[group] ?? [];
+    acc[group].push(item);
+    return acc;
+  }, {});
+}
+
+export function unique<T>(items: T[]): T[] {
+  return [...new Set(items)];
+}
+
+export function chunk<T>(items: T[], size: number): T[][] {
+  return Array.from({ length: Math.ceil(items.length / size) }, (_, i) =>
+    items.slice(i * size, i * size + size)
   );
-};
-export default ComponentA;
-```
-
-## More Helper Patterns
-
-### DB-util
-
-```js
-import { MongoClient } from 'mongodb';
-
-const dbusername = process.env.mongodb_username;
-const dbpassword = process.env.mongodb_password;
-const dbconnection = '@cluster0.ewevp.mongodb.net/';
-const dbname = 'nextEvents';
-const dbprefix = 'mongodb+srv://';
-
-export async function connectToDatabase() {
-  const client = await MongoClient.connect(
-    `${dbprefix}${dbusername}:${dbpassword}${dbconnection}${dbname}`
-  );
-
-  return client;
-}
-
-export async function insertDocument(client, collection, document) {
-  const db = client.db();
-
-  const result = await db.collection(collection).insertOne(document);
-
-  return result;
-}
-
-export async function getAllDocuments(client, collection, sort, filter) {
-  const db = client.db();
-
-  const documents = await db
-    .collection(collection)
-    .find(filter)
-    .sort(sort)
-    .toArray();
-
-  return documents;
 }
 ```
 
-### Usage of DB-util
+## API helper module
 
-```js
-import {
-  connectToDatabase,
-  insertDocument,
-  getAllDocuments,
-} from '../../../helpers/db-util';
+Centralizing fetch calls in one file means you change the base URL or add an auth header in exactly one place.
 
-async function handler(req, res) {
-  const eventId = req.query.eventId;
+```ts
+// helpers/api-util.ts
+const BASE = process.env.NEXT_PUBLIC_API_URL ?? '';
 
-  let client;
+export async function getAllEvents(): Promise<Event[]> {
+  const res = await fetch(`${BASE}/events.json`);
+  if (!res.ok) throw new Error(`Failed to fetch events: ${res.status}`);
+  const data: Record<string, Omit<Event, 'id'>> = await res.json();
 
-  try {
-    client = await connectToDatabase();
-  } catch (error) {
-    res.status(500).json({ message: 'Connecting to the database failed!' });
-    return;
-  }
-
-  if (req.method === 'POST') {
-    const { email, name, text } = req.body;
-
-    if (
-      !email.includes('@') ||
-      !name ||
-      name.trim() === '' ||
-      !text ||
-      text.trim() === ''
-    ) {
-      res.status(422).json({ message: 'Invalid input.' });
-      client.close();
-      return;
-    }
-
-    const newComment = {
-      email,
-      name,
-      text,
-      eventId,
-    };
-
-    let result;
-
-    try {
-      result = await insertDocument(client, 'comments', newComment);
-      newComment._id = result.insertedId;
-      res.status(201).json({ message: 'Added comment.', comment: newComment });
-    } catch (error) {
-      res.status(500).json({ message: 'Inserting comment failed!' });
-    }
-  }
-
-  if (req.method === 'GET') {
-    try {
-      const documents = await getAllDocuments(
-        client,
-        'comments',
-        { _id: -1 },
-        { eventId: eventId }
-      );
-      res.status(200).json({ comments: documents });
-    } catch (error) {
-      res.status(500).json({ message: 'Getting comments failed.' });
-    }
-  }
-
-  client.close();
+  return Object.entries(data).map(([id, event]) => ({ id, ...event }));
 }
 
-export default handler;
-```
-
-### API-util
-
-```js
-export async function getAllEvents() {
-  const response = await fetch(
-    'https://next-js-course-9dc05-default-rtdb.firebaseio.com/events.json'
-  );
-  const data = await response.json();
-
-  const events = [];
-
-  for (const key in data) {
-    events.push({
-      id: key,
-      ...data[key],
-    });
-  }
-
-  return events;
+export async function getFeaturedEvents(): Promise<Event[]> {
+  const events = await getAllEvents();
+  return events.filter((e) => e.isFeatured);
 }
 
-export async function getFeaturedEvents() {
-  const allEvents = await getAllEvents();
-  return allEvents.filter((event) => event.isFeatured);
-}
-
-export async function getEventById(id) {
-  const allEvents = await getAllEvents();
-  return allEvents.find((event) => event.id === id);
-}
-
-export async function getFilteredEvents(dateFilter) {
-  const { year, month } = dateFilter;
-
-  const allEvents = await getAllEvents();
-
-  let filteredEvents = allEvents.filter((event) => {
-    const eventDate = new Date(event.date);
-    return (
-      eventDate.getFullYear() === year && eventDate.getMonth() === month - 1
-    );
-  });
-
-  return filteredEvents;
+export async function getEventById(id: string): Promise<Event | undefined> {
+  const events = await getAllEvents();
+  return events.find((e) => e.id === id);
 }
 ```
 
-### Usage of API-util
+Usage from a Next.js page:
 
-```jsx
-import { Fragment } from 'react';
-import { useRouter } from 'next/router';
-import Head from 'next/head';
-
+```ts
+// pages/events/index.tsx
 import { getAllEvents } from '../../helpers/api-util';
-import EventList from '../../components/events/event-list';
-import EventsSearch from '../../components/events/events-search';
-
-function AllEventsPage(props) {
-  const router = useRouter();
-  const { events } = props;
-
-  function findEventsHandler(year, month) {
-    const fullPath = `/events/${year}/${month}`;
-
-    router.push(fullPath);
-  }
-
-  return (
-    <Fragment>
-      <Head>
-        <title>All Events</title>
-        <meta
-          name="description"
-          content="Find a lot of great events that allow you to evolve..."
-        />
-      </Head>
-      <EventsSearch onSearch={findEventsHandler} />
-      <EventList items={events} />
-    </Fragment>
-  );
-}
 
 export async function getStaticProps() {
   const events = await getAllEvents();
+  return { props: { events }, revalidate: 60 };
+}
+```
 
-  return {
-    props: {
-      events: events,
-    },
-    revalidate: 60,
-  };
+## Database helper module
+
+For server-side code, a `db-util` file keeps connection logic in one place and prevents opening multiple connections across route handlers.
+
+```ts
+// helpers/db-util.ts
+import { MongoClient, Db } from 'mongodb';
+
+const uri = process.env.MONGODB_URI!;
+let cachedClient: MongoClient | null = null;
+
+export async function connectToDatabase(): Promise<{ client: MongoClient; db: Db }> {
+  if (cachedClient) {
+    return { client: cachedClient, db: cachedClient.db() };
+  }
+  const client = new MongoClient(uri);
+  await client.connect();
+  cachedClient = client;
+  return { client, db: client.db() };
 }
 
-export default AllEventsPage;
+export async function insertDocument<T>(
+  db: Db,
+  collection: string,
+  document: T
+) {
+  return db.collection<T>(collection).insertOne(document as any);
+}
+
+export async function getAllDocuments<T>(
+  db: Db,
+  collection: string,
+  sort: Record<string, 1 | -1> = {},
+  filter: Record<string, unknown> = {}
+): Promise<T[]> {
+  return db.collection<T>(collection).find(filter).sort(sort).toArray();
+}
 ```
+
+The connection is cached at module level so repeated calls within the same Node.js process reuse the existing connection instead of opening a new one on every request.
+
+## Where to put helper files
+
+There is no enforced convention, but most codebases follow one of two patterns:
+
+```
+# Option 1 — flat utils folder
+src/
+  utils/
+    string-util.ts
+    array-util.ts
+    date-util.ts
+  helpers/
+    api-util.ts
+    db-util.ts
+```
+
+```
+# Option 2 — colocate with the feature that owns them
+src/
+  features/
+    events/
+      events-util.ts
+      EventList.tsx
+  shared/
+    utils/
+      string-util.ts
+```
+
+Shared, general-purpose functions go in `utils/`. Helpers tied to a specific feature stay next to that feature. Generic data-access helpers (db connections, API base calls) often live in a top-level `helpers/` or `lib/` folder.
 
 ## Noteables
 
-- Remember to create UTIL files early as it can save you time and headache!
+- Extract a function into a helper as soon as you see it used in two or more places.
+- Pure functions (no side effects, same output for same input) are easiest to test and reason about.
+- Name files after what they do: `date-util.ts`, `api-util.ts`, not `helpers.ts`.
 
-Learn more about it [here](https://v4.mui.com/styles/api/#makestyles-styles-options-hook)
+Learn more in the [MDN JavaScript modules guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules).

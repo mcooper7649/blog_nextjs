@@ -982,4 +982,4 @@ const removeFromWatchList = async () => {
 
 - With Firebase, it's pretty simple to connect and use built-in third-party authentication providers, including Google, Facebook, Twitter, among others.
 
-Learn more about it [here](https://v4.mui.com/styles/api/#makestyles-styles-options-hook)
+Learn more in the [Firebase Authentication docs](https://firebase.google.com/docs/auth).
