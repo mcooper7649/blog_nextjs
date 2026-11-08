@@ -2,112 +2,266 @@
 title: 'NextJS: Core Feature Overview'
 date: '2022-03-01'
 image: getting-started-nextjs.png
-excerpt: NextJS is a the React framework for production - it makes building fullstack React apps and sites a breeze and ships with built-in SSR.
+excerpt: NextJS is the React framework for production — it ships file-based routing, server-side rendering, static generation, and smart data fetching out of the box.
 isFeatured: false
 belt: yellow
 ---
 
-NextJS is a **framework for ReactJS**.
+Next.js is a **framework built on top of React** that solves three problems that plain React leaves to you: routing, server-side rendering, and data fetching. This guide covers the Pages Router — the original Next.js model that is still widely used in production apps today.
 
-👀 Wait a second ... a "framework" for React? Isn't React itself already a framework for JavaScript?
+For the newer App Router (introduced in Next.js 13), see [Next.js App Router: What Changed and Why It Matters](/posts/nextjs-app-router).
 
-Well ... first of all, React is a "library" for JavaScript. That seems to be important for some people.
-
-Not for me, but still, there is a valid point: React already is a framework / library for JavaScript. So it's already an extra layer on top of JS.
-
-## Why would we then need NextJS?
-
-Because NextJS makes building React apps easier - especially React apps that should have server-side rendering (though it does way more than just take care of that).
-
-In this article, we'll dive into 3 core concepts and features NextJS has to offer:
-
-- File-based Routing
-- Built-in Page Pre-rendering
-- Rich Data Fetching Capabilities
-
+---
 
 ## File-based Routing
 
 ![Create routes via your file + folder structure](nextjs-file-based-routing.png)
 
-## Classic React Rendering
-![No-rendering Example](No-rendering.png)
-React doesn't have pre-rendering so you must wait for the content to load.
+In a standard React app you install a router package, import components, and define routes manually. Next.js takes a different approach: **every file you create in `pages/` becomes a route automatically.**
 
+```
+pages/
+  index.js          → /
+  about.js          → /about
+  blog/
+    index.js        → /blog
+    [slug].js       → /blog/:slug   (dynamic segment)
+  posts/
+    [id]/
+      comments.js   → /posts/:id/comments
+```
 
-## Built-in Page Pre-rendering
-![Pre-rendering Example](Pre-rendering.png)
+### Dynamic Routes
 
-By default, Next.js pre-renders every page. This means that Next.js generates HTML for each page in advance, instead of having it all done by client-side JavaScript. Pre-rendering can result in better performance and SEO.
-Each generated HTML is associated with minimal JavaScript code necessary for that page. When a page is loaded by the browser, its JavaScript code runs and makes the page fully interactive. (This process is called hydration.)
+Square brackets mark a dynamic segment. The value is available inside the page via `useRouter()` or `getServerSideProps`/`getStaticProps`:
 
-## Two Types of Pre-rendering
-### Server-Side Rendering
-![SSR](SSR.png)
+```jsx
+// pages/blog/[slug].js
+import { useRouter } from 'next/router';
 
-### Static Site Generation
-![Static-Gen](static-gen.png)
+export default function BlogPost() {
+  const router = useRouter();
+  const { slug } = router.query; // "my-first-post"
 
-- Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering. The difference is in when it generates the HTML for a page.
-- Static Generation is the pre-rendering method that generates the HTML at build time. The pre-rendered HTML is then reused on each request.
-- Server-side Rendering is the pre-rendering method that generates the HTML on each request.
-
-### Per Page Basis 
-![Per Page Basis](per-page-basis.png)
-
-Importantly, Next.js lets you choose which pre-rendering form to use for each page. You can create a "hybrid" Next.js app by using Static Generation for most pages and using Server-side Rendering for others.
-
-When to Use Static Generation v.s. Server-side Rendering
-We recommend using Static Generation (with and without data) whenever possible because your page can be built once and served by CDN, which makes it much faster than having a server render the page on every request.
-
-You can use Static Generation for many types of pages, including:
-
-- ***Marketing pages***
-- ***Blog posts***
-- ***E-commerce product listings***
-- ***Help and documentation***
-
-You should ask yourself: ***"Can I pre-render this page ahead of a user's request?"*** If the answer is yes, then you should choose Static Generation.
-
-On the other hand, Static Generation is not a good idea if you cannot pre-render a page ahead of a user's request. Maybe your page shows frequently updated data, and the page content changes on every request.
-
-In that case, you can use Server-side Rendering. It will be slower, but the pre-rendered page will always be up-to-date. Or you can skip pre-rendering and use client-side JavaScript to populate frequently updated data.
-
-
-
-## Rich Data Fetching Capabilities
-
-### Static Generation with and without Data
-![Static without data](static-wo-data.png)
-Static Generation can be done with and without data.
-
-So far, all the pages we’ve created do not require fetching external data. Those pages will automatically be statically generated when the app is built for production.
-
-
-### Static Generation with and with Data
-![Static with data](static-with-data.png)
-
-However, for some pages, you might not be able to render the HTML without first fetching some external data. Maybe you need to access the file system, fetch external API, or query your database at build time. Next.js supports this case — Static Generation with data — out of the box.
-
-Static Generation with Data using getStaticProps
-How does it work? Well, in Next.js, when you export a page component, you can also export an async function called getStaticProps. If you do this, then:
-
-- getStaticProps runs at build time in production, and…
-- Inside the function, you can fetch external data and send it as props to the page
-
-```js
-export default function Home(props) { ... }
-
-export async function getStaticProps() {
-  // Get external data from the file system, API, DB, etc.
-  const data = ...
-
-  // The value of the `props` key will be
-  //  passed to the `Home` component
-  return {
-    props: ...
-  }
+  return <h1>Post: {slug}</h1>;
 }
 ```
 
-Information Sourced from: [NextJS Docs](https://nextjs.org/learn/basics)
+### Linking Between Pages
+
+Use the built-in `<Link>` component instead of plain `<a>` tags — it handles client-side navigation and prefetches linked pages in the background:
+
+```jsx
+import Link from 'next/link';
+
+export default function Nav() {
+  return (
+    <nav>
+      <Link href="/">Home</Link>
+      <Link href="/about">About</Link>
+      <Link href="/blog/hello-world">First Post</Link>
+    </nav>
+  );
+}
+```
+
+---
+
+## Classic React Rendering vs. Next.js Pre-rendering
+
+![No-rendering Example](No-rendering.png)
+
+In a plain React (Create React App) setup, the server sends a nearly empty `index.html` and all rendering happens in the browser. The user sees a blank page until JavaScript downloads, parses, and executes. Search engines may not see the full content because their crawlers have limited time to wait for JavaScript.
+
+![Pre-rendering Example](Pre-rendering.png)
+
+Next.js **pre-renders every page by default** — it generates HTML on the server so the browser receives ready-to-display markup immediately. After the HTML loads, React "hydrates" it: attaching event handlers and making the page interactive. The result is faster first paint and full SEO visibility.
+
+---
+
+## Two Types of Pre-rendering
+
+### Static Site Generation (SSG)
+
+![Static-Gen](static-gen.png)
+
+HTML is generated **once at build time** and served from a CDN on every subsequent request. This is the fastest option because there is no server computation per request.
+
+Use SSG when the page content does not change between deploys — marketing pages, blog posts, documentation.
+
+```jsx
+// pages/blog/[slug].js
+export async function getStaticPaths() {
+  // Tell Next.js which slugs to pre-build
+  const slugs = ['hello-world', 'second-post'];
+
+  return {
+    paths: slugs.map((slug) => ({ params: { slug } })),
+    fallback: false, // 404 for any slug not listed above
+  };
+}
+
+export async function getStaticProps({ params }) {
+  // This runs at build time — fetch from a CMS, file system, DB, etc.
+  const post = await fetchPostBySlug(params.slug);
+
+  return {
+    props: { post },
+    revalidate: 60, // regenerate at most once per minute (ISR)
+  };
+}
+
+export default function BlogPost({ post }) {
+  return (
+    <article>
+      <h1>{post.title}</h1>
+      <p>{post.body}</p>
+    </article>
+  );
+}
+```
+
+`revalidate` turns SSG into **Incremental Static Regeneration (ISR)**: pages are still served statically but Next.js rebuilds them in the background when they go stale. You get CDN speed with fresh data.
+
+### Server-Side Rendering (SSR)
+
+![SSR](SSR.png)
+
+HTML is generated **on each request**. The server fetches fresh data, renders the page, and sends it to the browser. Use SSR when the page must reflect the latest data on every load — user dashboards, search results, personalised pages.
+
+```jsx
+// pages/dashboard.js
+export async function getServerSideProps(context) {
+  const { req } = context;
+  const user = getUserFromCookie(req); // read the session cookie
+
+  if (!user) {
+    return { redirect: { destination: '/login', permanent: false } };
+  }
+
+  const stats = await fetchUserStats(user.id);
+
+  return { props: { user, stats } };
+}
+
+export default function Dashboard({ user, stats }) {
+  return (
+    <main>
+      <h1>Welcome, {user.name}</h1>
+      <p>Total posts: {stats.postCount}</p>
+    </main>
+  );
+}
+```
+
+---
+
+## Per-Page Rendering Strategy
+
+![Per Page Basis](per-page-basis.png)
+
+One of Next.js's strengths is that **you pick the strategy page by page**. A single app can have:
+
+- `/` — SSG (marketing landing page, rebuilt at deploy)
+- `/blog/[slug]` — SSG + ISR (blog posts, rebuilt on demand)
+- `/dashboard` — SSR (always fresh, auth-protected)
+- `/settings` — SSG shell + client-side fetch (static layout, user data loaded in the browser)
+
+---
+
+## Rich Data Fetching Capabilities
+
+### Static Pages Without Data
+
+![Static without data](static-wo-data.png)
+
+A page with no `getStaticProps` or `getServerSideProps` export is fully static — Next.js pre-renders it at build time with no external data:
+
+```jsx
+// pages/about.js — no data fetching needed
+export default function About() {
+  return <main><h1>About Us</h1><p>We build things.</p></main>;
+}
+```
+
+### Static Pages With Data
+
+![Static with data](static-with-data.png)
+
+Export `getStaticProps` to supply build-time data to the component. The function only ever runs on the server (or during the build) — it never ships to the browser bundle:
+
+```jsx
+// pages/index.js
+export async function getStaticProps() {
+  const res = await fetch('https://api.example.com/featured-posts');
+  const posts = await res.json();
+
+  return {
+    props: { posts },
+    revalidate: 300, // regenerate every 5 minutes
+  };
+}
+
+export default function Home({ posts }) {
+  return (
+    <ul>
+      {posts.map((p) => (
+        <li key={p.id}>{p.title}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+### Client-Side Fetching
+
+For data that is user-specific or should not be included in the initial HTML, fetch it in the browser with `useEffect` or a library like TanStack Query:
+
+```jsx
+import { useEffect, useState } from 'react';
+
+export default function Notifications() {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/notifications')
+      .then((r) => r.json())
+      .then(setItems);
+  }, []);
+
+  return <ul>{items.map((n) => <li key={n.id}>{n.message}</li>)}</ul>;
+}
+```
+
+---
+
+## API Routes
+
+The `pages/api/` directory lets you write serverless functions alongside your pages — no separate backend needed:
+
+```js
+// pages/api/hello.js
+// Accessible at GET /api/hello
+export default function handler(req, res) {
+  if (req.method !== 'GET') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+  res.status(200).json({ message: 'Hello from Next.js!' });
+}
+```
+
+API routes run only on the server and are excluded from the client bundle. Use them for form submissions, webhooks, or proxying third-party APIs to keep credentials out of the browser.
+
+---
+
+## When to Choose What
+
+| Scenario | Strategy |
+|---|---|
+| Marketing page, docs | SSG (no `getStaticProps`) |
+| Blog or product pages (content changes infrequently) | SSG + ISR (`revalidate`) |
+| News feed, search results (always fresh) | SSR (`getServerSideProps`) |
+| User-specific data (after auth) | SSG shell + client-side fetch |
+| Form submission, webhook endpoint | API Route |
+
+The [Next.js docs](https://nextjs.org/docs) are the best reference as the framework evolves, but these fundamentals remain consistent across versions.
