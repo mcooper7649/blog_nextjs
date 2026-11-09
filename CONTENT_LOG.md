@@ -61,3 +61,4 @@
 | 2026-11-06 | post | New post "React Suspense and Error Boundaries: Declarative Loading and Error States" — React.lazy + Suspense for code splitting, useSuspenseQuery from TanStack Query, class-based ErrorBoundary, react-error-boundary package, granular boundary placement. |
 | 2026-11-07 | refactor(post) | Expand "Helper Files and Utility Functions in React" stub — TypeScript helpers, API/DB util patterns, file organization, MDN link; fix broken MUI v4 link in firebase-auth post |
 | 2026-11-08 | refactor(post) | Expand thin "NextJS: Core Feature Overview" stub — add prose, working code examples for file-based routing, SSG, ISR, SSR, API routes, and a strategy-selection table |
+| 2026-11-09 | post | New post "Next.js Middleware: Auth Guards, Redirects, and Edge Logic" — matcher config, JWT auth gating with jose, locale redirects, rewrite vs redirect, header forwarding, and Edge runtime constraints.
