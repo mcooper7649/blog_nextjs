@@ -5,8 +5,6 @@ image: cover.jpg
 excerpt: Middleware runs before every matched request at the Edge, making it the right place for auth gating, locale detection, and fast redirects without touching your page code.
 isFeatured: false
 belt: green
-coverPending: true
-coverPrompt: 'A tollbooth painted vermilion on a wide highway at dawn, with a row of vehicles waiting to pass through the gate before the open road beyond'
 ---
 
 Next.js **middleware** is a single file — `middleware.ts` at the project root — that runs on every matched request before it reaches a page, API route, or static asset. It executes on the **Edge Runtime**, meaning it starts up nearly instantly, runs close to the user, and completes in milliseconds before Next.js decides what to serve.
