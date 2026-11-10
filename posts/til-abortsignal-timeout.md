@@ -5,8 +5,6 @@ image: cover.jpg
 excerpt: AbortSignal.timeout(ms) replaces the manual AbortController + setTimeout + clearTimeout dance with a single call.
 isFeatured: false
 belt: white
-coverPending: true
-coverPrompt: 'A glass hourglass with vermilion sand resting on a dark slate surface, surrounded by coiled copper wire, dramatic side lighting'
 ---
 
 **TIL** that `AbortSignal.timeout(ms)` exists — and it replaces about eight lines of `AbortController` boilerplate with one.
