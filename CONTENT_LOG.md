@@ -63,3 +63,4 @@
 | 2026-11-08 | refactor(post) | Expand thin "NextJS: Core Feature Overview" stub — add prose, working code examples for file-based routing, SSG, ISR, SSR, API routes, and a strategy-selection table |
 | 2026-11-09 | post | New post "Next.js Middleware: Auth Guards, Redirects, and Edge Logic" — matcher config, JWT auth gating with jose, locale redirects, rewrite vs redirect, header forwarding, and Edge runtime constraints.
 | 2026-11-10 | post | New TIL post "AbortSignal.timeout() — Add Fetch Timeouts in One Line" — replaces AbortController + setTimeout boilerplate, error handling for TimeoutError, AbortSignal.any() for combined signals, support table |
+| 2026-11-11 | post | New post "Tailwind CSS in React: Utility-First Styling That Actually Scales" — installation, spacing scale, responsive breakpoint prefixes, dark mode, clsx/cn() helpers, and when NOT to use @apply |
