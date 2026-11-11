@@ -5,8 +5,6 @@ image: cover.jpg
 excerpt: Skip the stylesheet ping-pong. Tailwind puts your styles next to your markup, keeps bundles small, and makes responsive and dark-mode design mechanical rather than creative.
 isFeatured: false
 belt: green
-coverPending: true
-coverPrompt: 'A painter arranging dozens of small color swatches in precise rows on a wooden workbench, one swatch painted vermilion, the rest forming a gradient of blues and grays'
 ---
 
 Tailwind CSS is a utility-first CSS framework. Instead of writing classes like `.card-header` and then filling a stylesheet with the rules behind them, you compose small single-purpose classes—`flex`, `p-4`, `text-sm`, `bg-white`—directly in your JSX. The idea sounds messy until you try it; then it starts to feel obvious.
