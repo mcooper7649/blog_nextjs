@@ -5,8 +5,6 @@ image: cover.jpg
 excerpt: TypeScript 5.2 added the `using` declaration — a finally block that writes itself.
 isFeatured: false
 belt: green
-coverPending: true
-coverPrompt: 'A tidy workshop shelf where tools return to labeled hooks automatically after use, with a vermilion wrench hanging precisely in its spot'
 ---
 
 TypeScript 5.2 shipped an implementation of the [TC39 Explicit Resource Management proposal](https://github.com/tc39/proposal-explicit-resource-management) (now Stage 4). The key addition is `using`: a declaration that automatically calls a cleanup method when the enclosing block exits — even on throw.
