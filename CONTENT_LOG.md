@@ -65,3 +65,4 @@
 | 2026-11-10 | post | New TIL post "AbortSignal.timeout() — Add Fetch Timeouts in One Line" — replaces AbortController + setTimeout boilerplate, error handling for TimeoutError, AbortSignal.any() for combined signals, support table |
 | 2026-11-11 | post | New post "Tailwind CSS in React: Utility-First Styling That Actually Scales" — installation, spacing scale, responsive breakpoint prefixes, dark mode, clsx/cn() helpers, and when NOT to use @apply |
 | 2026-11-12 | post | New TIL post "TIL: `using` — TypeScript Built-in Resource Cleanup" — using/await using declarations, Symbol.dispose, AsyncDisposable, DisposableStack, tsconfig setup, support table |
+| 2026-11-13 | post | New post "tRPC: End-to-End Type Safety Without a Schema" — procedures, Zod input validation, React hooks integration, RSC server caller, and auth context.
