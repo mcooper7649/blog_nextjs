@@ -5,8 +5,6 @@ image: cover.jpg
 excerpt: Share TypeScript types between your Next.js server and client without code generation, OpenAPI, or a separate schema file.
 isFeatured: false
 belt: green
-coverPending: true
-coverPrompt: 'A steel chain of puzzle pieces linking two computer towers together, with a vermilion lock snapped shut at the center connection point.'
 ---
 
 REST APIs and GraphQL both require you to describe your contract twice: once on the server as actual code, and again somewhere else as documentation, a spec, or a schema file. tRPC skips that entirely by treating your TypeScript types as the contract. If the server compiles, the client is in sync.
