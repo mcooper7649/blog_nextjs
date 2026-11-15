@@ -67,3 +67,4 @@
 | 2026-11-12 | post | New TIL post "TIL: `using` — TypeScript Built-in Resource Cleanup" — using/await using declarations, Symbol.dispose, AsyncDisposable, DisposableStack, tsconfig setup, support table |
 | 2026-11-13 | post | New post "tRPC: End-to-End Type Safety Without a Schema" — procedures, Zod input validation, React hooks integration, RSC server caller, and auth context.
 | 2026-11-14 | refactor(post) | Expand thin "React Overview" stub — rewrite with proper prose, working code examples for hooks (useEffect, useRef, useContext), lists+keys, event handling, React Router v6, Zustand, and correct all typos |
+| 2026-11-15 | refactor(post) | Rewrite "React-Markdown" post — replace verbatim README copy with practical tutorial covering basic usage, remark-gfm, syntax highlighting with react-syntax-highlighter, custom components, raw HTML, and security |
