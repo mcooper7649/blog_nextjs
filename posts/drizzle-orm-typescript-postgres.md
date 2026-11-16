@@ -5,8 +5,6 @@ image: cover.jpg
 excerpt: Drizzle brings full TypeScript inference to your Postgres queries by writing the schema in TypeScript — no separate DSL, no code generator, just typed SQL that never drifts from your types.
 isFeatured: false
 belt: green
-coverPending: true
-coverPrompt: 'A brass carpenter square and a glowing blueprint scroll sit side by side on a rough oak workbench, with a small vermilion ink stamp pressed onto the corner of the blueprint.'
 ---
 
 Prisma is excellent, but it comes with a learning curve: you write your schema in a custom `.prisma` DSL, run a code generator, and work with a client whose type signatures are several layers removed from SQL. Drizzle ORM takes a different stance — you define your tables as TypeScript objects, the library infers the types at compile time, and the queries you write look close enough to SQL that the mental model never drifts far.
