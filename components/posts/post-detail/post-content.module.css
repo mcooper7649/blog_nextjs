@@ -128,13 +128,43 @@
 
 .lang {
   position: absolute;
-  top: 0.4rem;
-  right: 0.75rem;
+  top: 0.55rem;
+  left: 0.75rem;
   font-family: var(--font-mono), monospace;
   font-size: 0.68rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #9b9282;
+  pointer-events: none;
+}
+
+.copyBtn {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #9b9282;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.copyBtn:hover {
+  color: var(--code-fg);
+  border-color: rgba(155, 146, 130, 0.5);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.copyBtnDone {
+  color: #7ec88b;
+  border-color: rgba(126, 200, 139, 0.4);
 }
 
 .figure {
