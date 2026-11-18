@@ -70,3 +70,4 @@
 | 2026-11-15 | refactor(post) | Rewrite "React-Markdown" post — replace verbatim README copy with practical tutorial covering basic usage, remark-gfm, syntax highlighting with react-syntax-highlighter, custom components, raw HTML, and security |
 | 2026-11-16 | post | New post "Drizzle ORM: SQL-First Type Safety for TypeScript" — schema-as-TypeScript, drizzle-kit migrations, CRUD query builder, relational queries with eager loading, and Drizzle vs Prisma comparison |
 | 2026-11-17 | feat(ux) | Add copy-to-clipboard button to code blocks; move lang label to top-left for clean layout |
+| 2026-11-18 | post | New post "TypeScript Generics: Write Functions That Work on Any Type" — type parameters, extends constraints, generic interfaces, type-safe fetch wrapper, and generic React components |
