@@ -5,8 +5,6 @@ image: cover.jpg
 excerpt: Generics let you write functions and types that stay fully typed without locking down a single concrete type — the practical alternative to any.
 isFeatured: false
 belt: green
-coverPending: true
-coverPrompt: 'A large bronze key with a question mark cut into its bow, resting on an open engineering blueprint covered in precise grid lines, one corner curled back revealing a second vermilion blueprint underneath'
 ---
 
 TypeScript's `any` type is a pressure-relief valve. When the compiler complains and you're in a hurry, slapping `any` on something makes the error disappear. The cost is that you've opted that variable out of type checking entirely — the compiler will never catch a mistake there again.
