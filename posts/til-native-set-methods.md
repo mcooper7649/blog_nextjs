@@ -5,8 +5,6 @@ image: cover.jpg
 excerpt: ES2024 ships seven new Set methods — union, intersection, difference, symmetricDifference, isSubsetOf, isSupersetOf, and isDisjointFrom — so you can stop converting to arrays for every set operation.
 isFeatured: false
 belt: yellow
-coverPending: true
-coverPrompt: 'Two large vermilion metal rings overlapping on a stone surface, surrounded by scattered wooden puzzle pieces, seen from above'
 ---
 
 **TIL** that JavaScript `Set` now ships seven built-in methods for set algebra — and they've been available in all modern runtimes since early 2024. I had no idea until I reached for Lodash to do a simple intersection.
