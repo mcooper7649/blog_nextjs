@@ -5,8 +5,6 @@ image: cover.jpg
 excerpt: Template literal types let you encode string structure directly in the type system — catch invalid event names, route params, and CSS properties at compile time.
 isFeatured: false
 belt: green
-coverPending: true
-coverPrompt: 'A steel letterpress type tray with individual metal letter blocks arranged in rows, one vermilion letter block standing out from the silver ones, sitting on a wooden workbench in a print shop'
 ---
 
 TypeScript's type system handles numbers, booleans, objects, and unions. Template literal types extend it one step further: they let you describe string *shapes* at the type level, so invalid strings become compile-time errors rather than runtime surprises.
