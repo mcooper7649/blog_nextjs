@@ -73,3 +73,4 @@
 | 2026-11-18 | post | New post "TypeScript Generics: Write Functions That Work on Any Type" — type parameters, extends constraints, generic interfaces, type-safe fetch wrapper, and generic React components |
 | 2026-11-19 | post | New TIL post "TIL: Set Now Has union(), intersection(), and difference()" — ES2024 native Set methods, support table, real-world pattern |
 | 2026-11-20 | post | New post "TypeScript Template Literal Types: Type-Safe String Patterns" — basic syntax, union distribution, Capitalize/Uppercase intrinsic types, key remapping, infer extraction, typed event bus pattern |
+| 2026-11-21 | chore(perf) | Compress 2 oversized PNG images (nextjs-file-based-routing.png 764KB→92KB, mastering-js-thumb.png 260KB→192KB), saving ~740KB |
