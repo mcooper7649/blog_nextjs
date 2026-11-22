@@ -1,6 +1,6 @@
 ---
 title: User Authorization with Firebase Walkthrough
-excerpt: Steps Used to add Firebase to Crypto Tracking Application
+excerpt: A walkthrough for adding Firebase Authentication (email/password and Google OAuth) and Firestore to a React application.
 image: firebaseAuth-main.png
 isFeatured: true
 date: '2022-06-16'
@@ -286,7 +286,7 @@ export default Login;
 
 ## HandleSubmit PW Logic on SignUp
 
-1. Inside of HandleSugbmit lets add pw logic
+1. Inside of HandleSubmit, add password validation logic:
    if (password !== confirmPassword)
 
 2. Next we want to add a SnackBar alert from MUI to prompt
@@ -343,23 +343,25 @@ const Alert = () => {
       return;
     }
 
-    setAlert({open: false});
+    setAlert({ open: false });
+  };
+
   return (
-        <Snackbar
-          open={alert.open}
-          autoHideDuration={3000}
-          onClose={handleClose}
-        >
-          <MuiAlert
-            onClose={handleClose}
-            elevation={10}
-            variant="filled"
-            severity={alert.type}
-            >
-          {alert.message}
-          </MuiAlert>
-        </Snackbar>
-  )
+    <Snackbar
+      open={alert.open}
+      autoHideDuration={3000}
+      onClose={handleClose}
+    >
+      <MuiAlert
+        onClose={handleClose}
+        elevation={10}
+        variant="filled"
+        severity={alert.type}
+      >
+        {alert.message}
+      </MuiAlert>
+    </Snackbar>
+  );
 };
 
 export default Alert;
@@ -394,9 +396,9 @@ const handleSubmit = () => {
 ## Adding Try Catch Block
 
 1.  After our if/password check we want to add a try/catch but still iside our handleSubmit function
-2.  Insided of our try {} lets add
+2.  Inside our try {} block, add
 
-    1.  const result = await createuserWithEmailAndPassword()
+    1.  const result = await createUserWithEmailAndPassword()
     2.  Add async to our handleSubmit before our argument ()
     3.  Pass auth as the first arg and make sure to import
     4.  Pass email and password as the last two arguments
@@ -726,7 +728,7 @@ Google Provider Code
 ## Adding FIRESTORE for our WATCHLIST storage
 
 1. Go to Firebase Dashboard, under BUILD find FIRESTORE DATABASE. Click
-2. Swith radio start in test
+2. Switch the radio button to "Start in test mode"
 3. Test mode allows you more than 30 days of development for free
 4. Select a Server, default works
 5. Click Rule tab
@@ -789,7 +791,7 @@ service cloud.firestore {
 3. Add a try catch block next
 4. add setDoc and import from firestore
    1. Pass our coinRef as the first arg that has all the doc data
-   2. Pass an object with coins and ternirary logic for if a watchlist currently exists or needs to be created (see example below)
+   2. Pass an object with coins and ternary logic for if a watchlist currently exists or needs to be created (see example below)
 5. Add watchlist and setWatchList to our cryptoContext useState
 6. pass it down via the Provider too
 7. now we can add watchlist to our destructure on coinpage
@@ -870,7 +872,7 @@ useEffect(() => {
       if (coin.exists()) {
         setWatchlist(coin.data().coins);
       } else {
-        console.Console('No Items in Watchlist');
+        console.log('No Items in Watchlist');
       }
     });
     return () => {
@@ -915,7 +917,7 @@ const removeFromWatchList = async () => {
   } catch (error) {
     setAlert({
       open: true,
-      mesage: error.message,
+      message: error.message,
       type: 'error',
     });
   }
