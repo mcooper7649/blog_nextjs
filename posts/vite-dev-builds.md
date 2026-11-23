@@ -5,8 +5,6 @@ image: cover.jpg
 excerpt: Replace CRA or a webpack-based setup with Vite for near-instant dev starts, fast HMR, and a Rollup-powered production build — no ejecting required.
 isFeatured: false
 belt: green
-coverPending: true
-coverPrompt: 'A vermilion lightning bolt striking a classic wooden workbench covered with gears and circuit boards, tools scattered around it'
 ---
 
 Create React App shipped in 2016 and taught a generation of developers to reach for `npx create-react-app`. Its time has passed. The repo is in maintenance mode, its webpack bundle takes seconds to cold-start even on fast machines, and each HMR reload sends megabytes of re-bundled code to the browser. **Vite** solves all three problems with a different architectural bet: skip bundling in development entirely.
