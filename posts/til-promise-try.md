@@ -5,8 +5,6 @@ image: cover.jpg
 excerpt: Promise.try() wraps any function — sync or async — in a Promise, so errors always flow through .catch() instead of escaping the chain.
 isFeatured: false
 belt: yellow
-coverPending: true
-coverPrompt: 'A chain of iron links stretching across a wooden table, the first link glowing vermilion as if just forged, the rest cool and grey'
 ---
 
 ES2025 adds a small static method to `Promise` that you will reach for more often than you expect: `Promise.try()`.
