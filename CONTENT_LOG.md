@@ -76,3 +76,4 @@
 | 2026-11-21 | chore(perf) | Compress 2 oversized PNG images (nextjs-file-based-routing.png 764KB→92KB, mastering-js-thumb.png 260KB→192KB), saving ~740KB |
 | 2026-11-22 | fix(post) | Fix 5 code/prose bugs in featured "Firebase Auth Walkthrough" post: broken Alert.js return placement, mesage typo in setDoc catch, console.Console→console.log, createuserWithEmailAndPassword casing, Swith→Switch; improve excerpt |
 | 2026-11-23 | post | New post "Vite: A Dev Server That Does Not Keep You Waiting" — ESM-based dev server, path aliases, env vars, migration from CRA, and production build
+| 2026-11-24 | post | New TIL post "Promise.try() — Start Any Function in a Promise Chain" — ES2025 static method that wraps sync and async functions in a promise chain, polyfill, support table |
