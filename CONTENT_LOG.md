@@ -77,3 +77,4 @@
 | 2026-11-22 | fix(post) | Fix 5 code/prose bugs in featured "Firebase Auth Walkthrough" post: broken Alert.js return placement, mesage typo in setDoc catch, console.Console→console.log, createuserWithEmailAndPassword casing, Swith→Switch; improve excerpt |
 | 2026-11-23 | post | New post "Vite: A Dev Server That Does Not Keep You Waiting" — ESM-based dev server, path aliases, env vars, migration from CRA, and production build
 | 2026-11-24 | post | New TIL post "Promise.try() — Start Any Function in a Promise Chain" — ES2025 static method that wraps sync and async functions in a promise chain, polyfill, support table |
+| 2026-11-25 | post | New post "useTransition and startTransition: Keep React Responsive During Expensive Updates" — transition concept, useTransition hook with isPending, standalone startTransition, Suspense integration, comparison with useDeferredValue
