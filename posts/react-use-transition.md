@@ -5,8 +5,6 @@ image: cover.jpg
 excerpt: React 18 lets you mark slow state updates as non-urgent so the browser stays responsive while they render.
 isFeatured: false
 belt: green
-coverPending: true
-coverPrompt: 'A traffic conductor in an orange vest directing two streams of cars at an intersection, one lane marked fast and urgent with a vermilion stripe, the other slower but steady.'
 ---
 
 React re-renders synchronously by default. That means if you trigger a state update that causes a slow render tree — a large filtered list, a heavy data table, a complex chart — the browser cannot handle keypresses, scrolls, or clicks until the render finishes.
