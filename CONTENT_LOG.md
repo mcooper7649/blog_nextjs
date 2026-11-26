@@ -78,3 +78,4 @@
 | 2026-11-23 | post | New post "Vite: A Dev Server That Does Not Keep You Waiting" — ESM-based dev server, path aliases, env vars, migration from CRA, and production build
 | 2026-11-24 | post | New TIL post "Promise.try() — Start Any Function in a Promise Chain" — ES2025 static method that wraps sync and async functions in a promise chain, polyfill, support table |
 | 2026-11-25 | post | New post "useTransition and startTransition: Keep React Responsive During Expensive Updates" — transition concept, useTransition hook with isPending, standalone startTransition, Suspense integration, comparison with useDeferredValue
+| 2026-11-26 | post | New TIL post "crypto.randomUUID() — Generate UUIDs Without a Package" — native UUID v4 generation in browsers and Node.js 14.17+, comparison with the uuid package, support table, drop-in replacement example
