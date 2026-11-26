@@ -5,8 +5,6 @@ image: cover.jpg
 excerpt: The Web Crypto API ships a native randomUUID() method in every modern browser and Node.js 14.17+, so you do not need the uuid package for most use cases.
 isFeatured: false
 belt: yellow
-coverPending: true
-coverPrompt: 'A close-up of a single snowflake crystal resting on a wooden surface, each arm perfectly unique and intricate, with a small vermilion drop of water beside it.'
 ---
 
 The `uuid` package has tens of millions of weekly downloads, mostly for one thing: `uuidv4()`. Since Node.js 14.17 and every modern browser, you have that built in.
