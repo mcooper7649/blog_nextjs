@@ -79,3 +79,4 @@
 | 2026-11-24 | post | New TIL post "Promise.try() — Start Any Function in a Promise Chain" — ES2025 static method that wraps sync and async functions in a promise chain, polyfill, support table |
 | 2026-11-25 | post | New post "useTransition and startTransition: Keep React Responsive During Expensive Updates" — transition concept, useTransition hook with isPending, standalone startTransition, Suspense integration, comparison with useDeferredValue
 | 2026-11-26 | post | New TIL post "crypto.randomUUID() — Generate UUIDs Without a Package" — native UUID v4 generation in browsers and Node.js 14.17+, comparison with the uuid package, support table, drop-in replacement example
+| 2026-11-27 | post | New post "Nginx as a Reverse Proxy with Docker: Route All Your Services Through One Port" — Docker Compose + nginx setup, subdomain routing, Let's Encrypt certbot bootstrap, WebSocket headers, rate limiting, and config test workflow |
