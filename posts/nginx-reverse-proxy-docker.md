@@ -5,8 +5,6 @@ image: cover.jpg
 excerpt: Run multiple Docker containers on a single server and expose them all on port 443 with subdomain routing, Let's Encrypt SSL, and clean nginx config.
 isFeatured: false
 belt: green
-coverPending: true
-coverPrompt: 'A large vermilion traffic roundabout sign at the center of a network of roads converging from many directions, with small cargo trucks routing to different destinations'
 ---
 
 If you self-host services — a blog, an n8n workflow engine, Home Assistant, Netdata, Gitea — you eventually hit a wall: each container wants its own port, and remembering `:8080`, `:5678`, `:8123` for every service is a maintenance tax. A **reverse proxy** solves this by sitting in front of all your containers, accepting every request on port 443, and routing by subdomain or path to the right service.
