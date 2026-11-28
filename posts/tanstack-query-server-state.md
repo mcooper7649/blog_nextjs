@@ -7,7 +7,7 @@ isFeatured: false
 belt: green
 ---
 
-I was deep into my third project when I realized I was copy-pasting the same pattern every time:
+If you have written a React app that fetches data, you have almost certainly written something like this:
 
 ```jsx
 const [data, setData] = useState(null)
@@ -23,7 +23,7 @@ useEffect(() => {
 }, [])
 ```
 
-Eight lines for what should be one. It doesn't cache, doesn't deduplicate requests, doesn't refetch in the background when the window regains focus, and has no retry logic. TanStack Query (formerly React Query) handles all of that — and more — with a clean API.
+Eight lines of boilerplate for what should be one conceptual step. This pattern doesn't cache results, doesn't deduplicate requests fired by multiple components, doesn't refetch when the window regains focus, and has no retry logic. TanStack Query (formerly React Query) handles all of that — and more — with a clean API.
 
 ## What is TanStack Query?
 
@@ -171,6 +171,143 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 ```
 
 You get a floating panel that shows every active query, its status, cache age, and the raw data. It changes how you debug data-fetching issues entirely — far better than `console.log` sprinkled around `useEffect` bodies.
+
+## Optimistic updates
+
+For fast-feeling UIs, you can update the cache *before* the server responds and roll back if the mutation fails:
+
+```jsx
+const queryClient = useQueryClient()
+
+const { mutate } = useMutation({
+  mutationFn: (updatedPost) =>
+    fetch(`/api/posts/${updatedPost.id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updatedPost),
+    }).then(r => r.json()),
+
+  onMutate: async (updatedPost) => {
+    // Cancel any in-flight refetches that might overwrite the optimistic value
+    await queryClient.cancelQueries({ queryKey: ['posts', updatedPost.id] })
+
+    // Snapshot what's in the cache right now
+    const previous = queryClient.getQueryData(['posts', updatedPost.id])
+
+    // Optimistically apply the change
+    queryClient.setQueryData(['posts', updatedPost.id], updatedPost)
+
+    // Return the snapshot so we can roll back on error
+    return { previous }
+  },
+  onError: (_err, updatedPost, context) => {
+    // Something went wrong — restore the original
+    queryClient.setQueryData(['posts', updatedPost.id], context.previous)
+  },
+  onSettled: (updatedPost) => {
+    // Whether success or error, re-sync from the server
+    queryClient.invalidateQueries({ queryKey: ['posts', updatedPost.id] })
+  },
+})
+```
+
+The pattern is: snapshot → apply → rollback on failure → always re-sync. `onMutate` returns the snapshot as `context`, which `onError` receives so the rollback is clean.
+
+## Dependent queries
+
+When one query depends on the result of another, use `enabled` to gate it:
+
+```jsx
+function UserPosts({ username }) {
+  // Step 1: fetch the user by username
+  const { data: user } = useQuery({
+    queryKey: ['user', username],
+    queryFn: () => fetch(`/api/users/${username}`).then(r => r.json()),
+  })
+
+  // Step 2: fetch their posts — but only once we have the user's id
+  const { data: posts } = useQuery({
+    queryKey: ['posts', 'byUser', user?.id],
+    queryFn: () => fetch(`/api/posts?userId=${user.id}`).then(r => r.json()),
+    enabled: !!user?.id,  // won't fire until user.id is truthy
+  })
+
+  if (!user) return <p>Loading user…</p>
+  if (!posts) return <p>Loading posts…</p>
+  return <ul>{posts.map(p => <li key={p.id}>{p.title}</li>)}</ul>
+}
+```
+
+TanStack Query fires both queries as soon as it can, automatically waits for `user.id`, then fires the second one — no manual state coordination needed.
+
+## Infinite queries and pagination
+
+For cursor-based or page-based pagination, `useInfiniteQuery` manages the full list of pages in a single cache entry:
+
+```jsx
+import { useInfiniteQuery } from '@tanstack/react-query'
+
+function PostFeed() {
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery({
+    queryKey: ['posts', 'infinite'],
+    queryFn: ({ pageParam }) =>
+      fetch(`/api/posts?cursor=${pageParam}`).then(r => r.json()),
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) => lastPage.nextCursor ?? undefined,
+  })
+
+  // data.pages is an array of all fetched pages
+  const allPosts = data?.pages.flatMap(page => page.items) ?? []
+
+  return (
+    <div>
+      <ul>
+        {allPosts.map(post => <li key={post.id}>{post.title}</li>)}
+      </ul>
+      <button
+        onClick={() => fetchNextPage()}
+        disabled={!hasNextPage || isFetchingNextPage}
+      >
+        {isFetchingNextPage ? 'Loading…' : hasNextPage ? 'Load more' : 'All caught up'}
+      </button>
+    </div>
+  )
+}
+```
+
+Each call to `fetchNextPage` appends a new page to `data.pages`. `getNextPageParam` receives the last loaded page and returns the cursor/page number for the next request — return `undefined` to signal the end of the list.
+
+## Prefetching
+
+For interactions where you know a navigation is likely — hovering a link, mousing over a card — you can warm the cache before the user clicks:
+
+```jsx
+function PostCard({ post }) {
+  const queryClient = useQueryClient()
+
+  return (
+    <Link
+      href={`/posts/${post.id}`}
+      onMouseEnter={() => {
+        queryClient.prefetchQuery({
+          queryKey: ['post', post.id],
+          queryFn: () => fetch(`/api/posts/${post.id}`).then(r => r.json()),
+          staleTime: 60_000,
+        })
+      }}
+    >
+      {post.title}
+    </Link>
+  )
+}
+```
+
+If the cache already has a fresh entry, `prefetchQuery` does nothing. If not, it fires the fetch in the background. By the time the user clicks, the data is likely already there and the page renders instantly.
 
 ## When to reach for it
 
